@@ -1,0 +1,39 @@
+jenkins:
+  systemMessage: "\n\nDemo setup for Jenkins Configuration as Code plugin - Devsu......\n"
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: ${JENKINS_ADMIN_ID}
+          password: ${JENKINS_ADMIN_PASSWORD}
+  authorizationStrategy:
+    globalMatrix:
+      permissions:
+        - "Overall/Administer:devsu"
+        - "Overall/Read:authenticated"
+jobs:
+  # Devsu Projects
+  - script: folder('devsu-pipelines')
+  - script: folder('devsu-pipelines/java')
+  - script: folder('devsu-pipelines/nodejs')
+  - script: folder('devsu-pipelines/python')
+  - script: folder('devsu-pipelines/java')
+  - script: >
+      pipelineJob('devsu-pipelines/java/main') {
+          definition {
+        }
+      }
+security:
+  queueItemAuthenticator:
+    authenticators:
+      - global:
+          strategy: triggeringUsersAuthorizationStrategy
+tool:
+  git:
+    installations:
+      - name: Default
+        home: "git"
+# http://localhost:8080/manage/configuration-as-code/reference#LibraryRetriever-legacySCM
+unclassified:
+  location:
+    url: http://testjenkins:7777/
