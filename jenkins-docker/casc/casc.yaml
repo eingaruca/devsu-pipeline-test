@@ -12,7 +12,7 @@ jenkins:
         - "Overall/Administer:devsu"
         - "Overall/Read:authenticated"
 jobs:
-  # Devsu Projects
+  # Devsu Project
   - script: folder('devsu-pipelines')
   - script: folder('devsu-pipelines/java')
   - script: folder('devsu-pipelines/nodejs')
@@ -21,7 +21,19 @@ jobs:
   - script: >
       pipelineJob('devsu-pipelines/java/main') {
           definition {
-        }
+              cpsScm {
+                  scm {
+                      git {
+                         remote {
+                          url('')
+                          credentials('')
+                         }
+                         branch('*/main') 
+                      }
+                      
+                  }
+              }
+          }
       }
 security:
   queueItemAuthenticator:
