@@ -1,15 +1,11 @@
 // Springboot Tests Strategy
 def springBootTests () {
-    parallel
-    ("Unit Tests":
-        {sbUnitTest()}
-    ,
-    "Acceptance Tests":
-        {sbAcceptanceTest()}
-    ,
-    "Integration Tests":
-        {sbIntegrationTest()}
-    , failFast: true)
+    parallel(
+        "Unit Tests": { sbUnitTest() },
+        "Acceptance Tests": { sbAcceptanceTest() },
+        "Integration Tests": { sbIntegrationTest() },
+        failFast: true
+    )
 }
 
 def sbUnitTest () {

@@ -10,7 +10,13 @@ def call(){
         maven.inside {
             sh "java -version"
 
-            testStrategy.springBootTests()
+            // testStrategy.springBootTests()
+            parallel(
+                "Unit Tests": { testStrategy.sbUnitTest() },
+                "Acceptance Tests": { testStrategy.sbAcceptanceTest() },
+                "Integration Tests": { testStrategy.sbIntegrationTest() },
+                failFast: true
+            )
             
         }
 
