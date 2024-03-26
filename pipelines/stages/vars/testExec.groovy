@@ -17,12 +17,12 @@ def call(){
 
     }
 
-    def springBootTests (){
-        echo "HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-    }
+}
 
-    def acceptanceTest () {
+def springBootTests (){
+    echo "HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+}
 
-    }
+def acceptanceTest () {
 
 }
