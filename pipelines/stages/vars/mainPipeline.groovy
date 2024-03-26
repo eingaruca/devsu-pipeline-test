@@ -11,6 +11,9 @@ def call (body) {
                 CheckoutStage.init(this)
             }
             
+            stage ( "Build Stage" ) {
+                BuildStage.init(this)
+            }
 
         }
     }
