@@ -1,4 +1,4 @@
-import org.emic.devsu
+import org.emic.devsu.*
 
 def call (body) {
     withFolderProperties {
