@@ -5,10 +5,13 @@ def call (body) {
         echo "[INFO] Test mainPipeline.groovy"
 
 
+
         node {
             stage ( "Checkout Stage" ) {
                 CheckoutStage.init(this)
             }
+            
+
         }
     }
 }
