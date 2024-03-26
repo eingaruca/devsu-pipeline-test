@@ -11,7 +11,6 @@ def call(){
             sh "java -version"
 
             springBootTests()
-            sh "mvn -f ${env.WORKSPACE}/pom.xml verify -Dskip.acceptance.tests=false -Dskip.integration.tests=true -Dskip.unit.tests=true -Dpmd.skip=true -Dcheckstyle.skip=true"
             
         }
 
@@ -19,10 +18,7 @@ def call(){
 
 }
 
-def springBootTests (){
-    echo "HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-}
+// def springBootTests (){
+//     log.info "TestStage", ""
+// }
 
-def acceptanceTest () {
-
-}
