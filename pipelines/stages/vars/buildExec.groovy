@@ -7,7 +7,7 @@ def call() {
         def maven = docker.image(image)
 
         maven.inside {
-            sh "mvn -f ${env.WORKSPACE}/frontend_testing/bootstrap_menu/testingsb/pom.xml clean -U -B package -Dskip.unit.tests=true -Dmaven.test.skip=true -Dpmd.skip=true"
+            sh "mvn -f ${env.WORKSPACE}/pom.xml clean -U -B package -Dskip.unit.tests=true -Dmaven.test.skip=true -Dpmd.skip=true"
             log.info "BuildStage", "Fin Build mvn"
         }
     }
