@@ -3,7 +3,7 @@ package org.emic.devsu
 class TestStage {
 
     static void init (script) {
-        testExec(script)
+        BDDTest(script)
     }
 
     private static void BDDTest (script){
