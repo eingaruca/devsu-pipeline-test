@@ -1,4 +1,4 @@
-packaget org.emic.devsu
+package org.emic.devsu
 
 class CheckoutStage {
 
