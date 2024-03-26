@@ -10,7 +10,7 @@ def call(){
         maven.inside {
             sh "java -version"
 
-            springBootTests()
+            testStrategy.springBootTests()
             
         }
 
