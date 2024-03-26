@@ -12,7 +12,7 @@ jenkins:
         - "Overall/Administer:devsu"
         - "Overall/Read:authenticated"
 jobs:
-  # Devsu Project
+  # Devsu Projects
   - script: folder('devsu-pipelines')
   - script: folder('devsu-pipelines/java')
   - script: folder('devsu-pipelines/nodejs')
@@ -35,11 +35,37 @@ jobs:
               }
           }
       }
+  - script: >
+      pipelineJob('devsu-pipelines/java/dev') {
+          definition {
+              cpsScm {
+                  scm {
+                      git {
+                         remote {
+                          url('https://github.com/eingaruca/demo-devops-java.git')
+                         }
+                         branch('*/dev') 
+                      }
+                      
+                  }
+              }
+          }
+      }
 security:
   queueItemAuthenticator:
     authenticators:
       - global:
           strategy: triggeringUsersAuthorizationStrategy
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - usernamePassword:
+              scope: GLOBAL
+              id: devsu_pipeline_test_token
+              username: ${GIT_USER}
+              password: ${DEVSU_PIPELINE_PASS}
+              description: devsu_pipeline_test_token
 tool:
   git:
     installations:
@@ -49,3 +75,17 @@ tool:
 unclassified:
   location:
     url: http://testjenkins:7777/
+  globalLibraries:
+    libraries:
+      - name: "devops-pipelines"
+        retriever:
+          modernSCM:
+            libraryPath: pipelines/stages
+            scm:
+              github:
+                # remote: "https://github.com/eingaruca/springboot_testing.git"
+                configuredByUrl: True
+                traits: 
+                 - gitBranchDiscovery
+                repositoryUrl: "https://github.com/eingaruca/devsu-pipeline-test.git"
+                credentialsId: 'devsu_pipeline_test_token'
