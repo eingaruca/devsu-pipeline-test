@@ -1,5 +1,5 @@
 def call() {
     withFolderProperties {
-        log("BuildExec", "Estoy en BuidExec.groovy")
+        log.info("BuildExec", "Estoy en BuidExec.groovy")
     }
 }
