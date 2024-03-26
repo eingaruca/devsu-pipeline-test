@@ -10,4 +10,8 @@ class CheckoutStage {
     private static void checkoutInfo(script){
         script.checkoutInfo()
     }
+
+    private static void checkoutExec (script) {
+        script.checkoutExec()
+    }
 }
