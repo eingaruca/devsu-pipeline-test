@@ -1,7 +1,7 @@
 def call(){
 
     withFolderProperties {
-        log.info "TestStage", "Testing project"
+        log.info "TestStage", "Testing projectttttttttttttttttttttttttttt"
 
         unstash name: 'build'
 
@@ -11,20 +11,15 @@ def call(){
             sh "java -version"
 
             // testStrategy.springBootTests()
-            parallel(
-                "Unit Tests": { testStrategy.sbUnitTest() },
-                "Acceptance Tests": { testStrategy.sbAcceptanceTest() },
-                "Integration Tests": { testStrategy.sbIntegrationTest() },
-                failFast: true
-            )
-            
+            // parallel(
+            //     "Unit Tests": { testStrategy.sbUnitTest() },
+            //     "Acceptance Tests": { testStrategy.sbAcceptanceTest() },
+            //     "Integration Tests": { testStrategy.sbIntegrationTest() },
+            //     failFast: true
+            // )
+            testStrategy.springBootTests()
         }
 
     }
 
 }
-
-// def springBootTests (){
-//     log.info "TestStage", ""
-// }
-
