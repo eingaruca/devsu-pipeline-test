@@ -13,6 +13,10 @@ def call (body) {
                 BuildStage.init(this)
             }
 
+            stage ( "Test Stage" ) {
+                TestStage.init(this)
+            }
+
         }
     }
 }
