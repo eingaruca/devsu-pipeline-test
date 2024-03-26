@@ -1,7 +1,8 @@
 def call() {
     withFolderProperties {
         log.info("BuildExec", "Building")
-        def image = "maven:latest"
+        // def image = "maven:latest"
+        def image = "maven:3.8.3-openjdk-17"
         log.info("BuildStage", "Workspace: ${env.WORKSPACE}")
      
         def maven = docker.image(image)
