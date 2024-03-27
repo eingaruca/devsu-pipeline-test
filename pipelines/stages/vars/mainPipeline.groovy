@@ -26,17 +26,20 @@ def call (body) {
                 BuildStage.init(this, projectTypeVar)
             }
 
+            // Optional Test Stage
             if ( testVar != null  ){
                 stage ( "Test Stage" ) {
                     TestStage.init(this, projectTypeVar, testVar)
+                    // utils.info "mainPipeline", "TestSTAGE"
+                }
+            }
+            // Optional Static Code Analysis Stage
+            if ( codeAnVar != null || codeAnVar ){
+                stage ( "Static Code Analysis Stage" ){
+                    CodeAnalysisStage.init(this, projectTypeVar)
                 }
             }
             
-
-            stage ( "Static Code Analysis Stage" ){
-                echo "Analysis"
-                // CodeAnalysisStage.init(this)
-            }
 
         }
     }

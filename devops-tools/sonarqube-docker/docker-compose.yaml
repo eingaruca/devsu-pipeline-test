@@ -21,3 +21,4 @@ services:
 # curl -u admin:admin -X POST "http://localhost:9000/api/users/change_password?login=admin&previousPassword=admin&password=devsu2024"
 # curl -u admin:devsu2024 -X POST "http://localhost:9000/api/user_tokens/generate?login=admin&name=testToken"
 
+#squ_176e8ec2579d2dbfac2c8ed83b7a1b29e39c39e4
