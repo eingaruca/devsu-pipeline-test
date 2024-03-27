@@ -1,9 +1,9 @@
-def call(projectType){
-    if ( projectType == "springboot" ) runSonarqubeSB()
-}
+// def call(projectType){
+//     if ( projectType == "springboot" ) runSonarqubeSB()
+// }
 
 
-def runSonarqubeSB(){
+def call(){
     dir("${env.WORKSPACE}") {
         def scanner = tool name: 'sonarqube-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
         withSonarQubeEnv('sonarqube-server-2'){
@@ -14,10 +14,10 @@ def runSonarqubeSB(){
         }
 
         timeout(time: 5, unit: 'MINUTES') {
-            log.info "CodeAnalysisStage", "Waiting time"
+            utils.info "CodeAnalysisStage", "Waiting time"
             def qualityGate = waitForQualityGate()
-            log.info "CodeAnalysisStage", "qualityGate: ${qualityGate.status}"
-            if ( qualityGate != 'OK' ) {
+            utils.info "CodeAnalysisStage", "qualityGate: ${qualityGate.status}"
+            if ( qualityGate.status != 'OK' ) {
                 error "Pipeline Error, aborted due error: ${qualityGate.status}"
             }
         }
@@ -26,17 +26,9 @@ def runSonarqubeSB(){
 }
 
 
-def runSonarqubeNodejs(){
-
-}
-
-def runSonarqubeDjango(){
-    
-}
-
 // Testing running Sonar as Docker container
 def runSonarqubeSB_containermode(){
-    log.info "CodeAnalysisStage", "Starting SonarQube Analysis - SpringBoot Code"
+    utils.info "CodeAnalysisStage", "Starting SonarQube Analysis - SpringBoot Code"
 
     withSonarQubeEnv('sonarqube-server'){
         echo "$pwd"

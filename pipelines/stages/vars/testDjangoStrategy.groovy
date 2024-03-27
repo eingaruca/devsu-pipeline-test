@@ -1,49 +1,46 @@
-// Springboot Tests Strategy
-def springBootTests (flags) {
-
-    if ( flags[0] ) sbUnitTest()
-    if ( flags[1] ) sbAcceptanceTest()
-    if ( flags[2] ) sbIntegrationTest()
-}
-
-def call (flags) {
+def call(flags) {
     withFolderProperties {
+        // Asumiendo que ya has construido tu proyecto Django
         unstash name: 'build'
-        def image = "maven:3.8.3-openjdk-17"
-        def maven = docker.image(image)
-        maven.inside {
-            sh "java -version"
-            if ( flags[0] ) sbUnitTest()
-            if ( flags[1] ) sbAcceptanceTest()
-            if ( flags[2] ) sbIntegrationTest()
-        }
         
+        // def image = "python:alpine3.19"
+        def image = "python:slim-bullseye"
+        def python = docker.image(image)
+        
+        python.inside {
+            sh "python --version"
+            if (flags[0]) djangoUnitTest()
+            if (flags[1]) djangoAcceptanceTest()
+            if (flags[2]) djangoIntegrationTest()
+
+            // Agrega aquí cualquier otra prueba que necesites ejecutar
+        }
     }
 }
 
-def sbUnitTest () {
-    utils.info "TestStage", "Starting UNIT Test"
+def djangoUnitTest() {
+    utils.info "TestStage", "Starting Django Unit Test"
 
     unstash name: 'build'
-    sh "mvn -f ${env.WORKSPACE}/pom.xml test -Dskip.unit.tests=false -Dskip.integration.tests=true -Dskip.acceptance.tests=true"
+    sh "python manage.py test"
 
-    utils.info "TestStage", "Finish UNIT Test"
+    utils.info "TestStage", "Finish Django Unit Test"
 }
 
-def sbAcceptanceTest () {
-    utils.info "TestStage", "Starting ACCEPTANCE Test"
+def djangoAcceptanceTest() {
+    utils.info "TestStage", "Starting Django Acceptance Test"
 
-    unstash name: 'build'
-    sh "mvn -f ${env.WORKSPACE}/pom.xml verify -Dskip.acceptance.tests=false -Dskip.integration.tests=true -Dskip.unit.tests=true -Dpmd.skip=true -Dcheckstyle.skip=true"
+    // unstash name: 'build'
+    utils.warning "TestStage", " *** Acceptance Test - EMPTY function, no code ***"
 
-    utils.info "TestStage", "Finish ACCEPTANCE Test"
+    utils.info "TestStage", "Finish Django Acceptance Test"
 }
 
-def sbIntegrationTest () {
-    utils.info "TestStage", "Starting INTEGRATION test"
-    
-    unstash name: 'build'
-    sh "mvn -f ${env.WORKSPACE}/pom.xml verify -Dskip.integration.tests=false -Dskip.acceptance.tests=true -Dskip.unit.tests=true"
+def djangoIntegrationTest() {
+    utils.info "TestStage", "Starting Django Integration Test"
 
-    utils.info "TestStage", "Finish INTEGRATION test"
+    unstash name: 'build'
+    sh "python manage.py test --tag integration"
+
+    utils.info "TestStage", "Finish Django Integration Test"
 }

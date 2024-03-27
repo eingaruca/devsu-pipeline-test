@@ -36,9 +36,13 @@ def call (body) {
             // Optional Static Code Analysis Stage
             if ( codeAnVar != null || codeAnVar ){
                 stage ( "Static Code Analysis Stage" ){
+                    // CodeAnalysisStage.init(this)
                     CodeAnalysisStage.init(this, projectTypeVar)
                 }
             }
+
+            //Code Coverage
+            //https://medium.com/@Anu_Rag/indepth-ci-cd-of-a-maven-project-a59961e448d7
             
 
         }

@@ -1,49 +1,42 @@
-// Springboot Tests Strategy
-def springBootTests (flags) {
-
-    if ( flags[0] ) sbUnitTest()
-    if ( flags[1] ) sbAcceptanceTest()
-    if ( flags[2] ) sbIntegrationTest()
-}
-
 def call (flags) {
     withFolderProperties {
         unstash name: 'build'
-        def image = "maven:3.8.3-openjdk-17"
-        def maven = docker.image(image)
-        maven.inside {
-            sh "java -version"
-            if ( flags[0] ) sbUnitTest()
-            if ( flags[1] ) sbAcceptanceTest()
-            if ( flags[2] ) sbIntegrationTest()
+        def image = "node:20-alpine3.18"
+        def node = docker.image(image)
+        node.inside {
+            sh "node --version"
+            sh "npm --version"
+            if ( flags[0] ) nodejsUnitTest()
+            if ( flags[1] ) nodejsAcceptanceTest()
+            if ( flags[2] ) nodejsIntegrationTest()
         }
         
     }
 }
 
-def sbUnitTest () {
-    utils.info "TestStage", "Starting UNIT Test"
+def nodejsUnitTest () {
+    utils.info "TestStage", "Starting Nodejs UNIT Test"
 
     unstash name: 'build'
-    sh "mvn -f ${env.WORKSPACE}/pom.xml test -Dskip.unit.tests=false -Dskip.integration.tests=true -Dskip.acceptance.tests=true"
+    sh "npm test" 
 
-    utils.info "TestStage", "Finish UNIT Test"
+    utils.info "TestStage", "Finish Nodejs UNIT Test"
 }
 
-def sbAcceptanceTest () {
-    utils.info "TestStage", "Starting ACCEPTANCE Test"
+def nodejsAcceptanceTest () {
+    utils.info "TestStage", "Starting Nodejs ACCEPTANCE Test"
 
-    unstash name: 'build'
-    sh "mvn -f ${env.WORKSPACE}/pom.xml verify -Dskip.acceptance.tests=false -Dskip.integration.tests=true -Dskip.unit.tests=true -Dpmd.skip=true -Dcheckstyle.skip=true"
+    // unstash name: 'build'
+    utils.warning "TestStage", " *** Acceptance Test - EMPTY function, no code ***"
 
-    utils.info "TestStage", "Finish ACCEPTANCE Test"
+    utils.info "TestStage", "Finish Nodejs ACCEPTANCE Test"
 }
 
-def sbIntegrationTest () {
+def nodejsIntegrationTest () {
     utils.info "TestStage", "Starting INTEGRATION test"
     
-    unstash name: 'build'
-    sh "mvn -f ${env.WORKSPACE}/pom.xml verify -Dskip.integration.tests=false -Dskip.acceptance.tests=true -Dskip.unit.tests=true"
+    // unstash name: 'build'
+    utils.warning "TestStage", "*** Integration Test - EMPTY function, no code ***"
 
-    utils.info "TestStage", "Finish INTEGRATION test"
+    utils.info "TestStage", "Finish Nodejs INTEGRATION test"
 }

@@ -1,16 +1,19 @@
 def call() {
     withFolderProperties {
-        utils.info "BuildStage", "Starting SpringBoot Strategy"
-        utils.info "BuildStage", "Workspace: ${env.WORKSPACE}"
+        utils.info "BuildStage", "Starting NodeJS Strategy"
+        // utils.info "BuildStage", "Workspace: ${env.WORKSPACE}"
 
-        def image = "maven:3.8.3-openjdk-17"
-        def maven = docker.image(image)
-        maven.inside {
-            sh "java -version"
-            sh "mvn -f ${env.WORKSPACE}/pom.xml clean -U -B package -Dskip.unit.tests=true -Dmaven.test.skip=true -Dpmd.skip=true"
-            
+        // Define Docker image
+        def image = "node:20-alpine3.18"
+        def node = docker.image(image)
+        // Execute commands inside Docker container
+        node.inside {
+            sh "node --version"
+            sh "npm --version"
+            sh "npm install"
         }
-        stash name: 'build' //, includes: 'pom.xml,**/pom.xml,**/src/,src/'
-        utils.info "BuildStage", "Finish SpringBoot Strategy"
+        // Make stash to use in other stages
+        stash name: 'build' 
+        utils.info "BuildStage", "Finish NodeJS Strategy"
     }
 }
