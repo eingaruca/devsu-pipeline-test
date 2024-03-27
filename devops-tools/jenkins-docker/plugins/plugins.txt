@@ -18,6 +18,7 @@ pam-auth:latest
 pipeline-github-lib:latest
 pipeline-stage-view:latest
 pipeline-utility-steps:latest
+sonar:latest
 timestamper:latest
 terraform:latest
 workflow-aggregator:latest

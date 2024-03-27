@@ -1,7 +1,7 @@
 def call(){
 
     withFolderProperties {
-        log.info "TestStage", "Testing projectttttttttttttttttttttttttttt"
+        log.info "TestStage", "Testing project"
 
         unstash name: 'build'
 
