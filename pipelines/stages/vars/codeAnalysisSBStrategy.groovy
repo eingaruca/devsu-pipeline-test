@@ -5,11 +5,13 @@
 
 def call(){
     dir("${env.WORKSPACE}") {
+        utils.info "CodeAnalysisStage", "Starting Code Analysis Springboot Strategy"
         def scanner = tool name: 'sonarqube-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+        def project = 'Java-Project'
         withSonarQubeEnv('sonarqube-server-2'){
             echo "$pwd"
             sh "java -version"
-            sh "${scanner}/bin/sonar-scanner -Dsonar.projectKey=Java-Project -Dsonar.java.binaries=target/classes"
+            sh "${scanner}/bin/sonar-scanner -Dsonar.projectKey=${project} -Dsonar.java.binaries=target/classes"
             sh 'sleep 10'
         }
 
@@ -21,7 +23,7 @@ def call(){
                 error "Pipeline Error, aborted due error: ${qualityGate.status}"
             }
         }
-
+        utils.info "CodeAnalysisStage", "Finish Code Analysis Springboot Strategy"
     }
 }
 

@@ -5,7 +5,6 @@ class CodeAnalysisStage {
     static void init (script, projectTypeVar){
 
         script.utils.info "CodeAnalysisStage", "Starting Static Code Analysis"
-        // script.codeAnalysisStrategy("springboot")
 
         switch (projectTypeVar) {
             case 'springboot':

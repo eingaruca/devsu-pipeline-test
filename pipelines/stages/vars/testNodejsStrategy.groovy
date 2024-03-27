@@ -18,25 +18,25 @@ def nodejsUnitTest () {
     utils.info "TestStage", "Starting Nodejs UNIT Test"
 
     unstash name: 'build'
-    sh "npm test" 
+    sh "npm run test" 
 
     utils.info "TestStage", "Finish Nodejs UNIT Test"
 }
 
 def nodejsAcceptanceTest () {
-    utils.info "TestStage", "Starting Nodejs ACCEPTANCE Test"
+    utils.warning "TestStage", "Starting Nodejs ACCEPTANCE Test"
 
     // unstash name: 'build'
     utils.warning "TestStage", " *** Acceptance Test - EMPTY function, no code ***"
 
-    utils.info "TestStage", "Finish Nodejs ACCEPTANCE Test"
+    utils.warning "TestStage", "Finish Nodejs ACCEPTANCE Test"
 }
 
 def nodejsIntegrationTest () {
-    utils.info "TestStage", "Starting INTEGRATION test"
+    utils.warning "TestStage", "Starting INTEGRATION test"
     
     // unstash name: 'build'
     utils.warning "TestStage", "*** Integration Test - EMPTY function, no code ***"
 
-    utils.info "TestStage", "Finish Nodejs INTEGRATION test"
+    utils.warning "TestStage", "Finish Nodejs INTEGRATION test"
 }
