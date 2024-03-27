@@ -7,14 +7,14 @@ services:
     ports:
       - 9000:9000
     networks:
-      sonarqube_network:
+      bridge:
         aliases:
-          - sonarqube_network
-networks:
-  sonarqube_network:
-    driver: bridge
-    ipam:
-      driver: default
+          - sonarqube_net
+# networks:
+#   sonarqube_network:
+#     driver: bridge
+#     ipam:
+#       driver: default
 
 # Change admin Password
 # https://sunilhari.medium.com/how-to-integrate-sonarqube-and-jenkins-721d5efd3cb6
