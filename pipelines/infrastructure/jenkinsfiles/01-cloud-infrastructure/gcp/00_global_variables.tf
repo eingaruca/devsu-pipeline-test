@@ -1,5 +1,5 @@
 # Provider
-# variable "credentials"          { default = "${file("../keys/iaas-ss-databases-98694fa6cc45.json")}" }
+# variable "credentials"          { default = "${file("../keys/xxx.json")}" }
 variable "credentials"          { default = "credentials/devsu-project.json" }
 variable "project"              { default = "devsu-project" }
 # Resources
