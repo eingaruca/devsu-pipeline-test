@@ -1,4 +1,4 @@
-module "instance-test-ora" {
+module "instance-test" {
   # Module
   source                = "./modules/instance"
   #Basics

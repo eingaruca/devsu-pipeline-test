@@ -6,11 +6,18 @@ resource "google_compute_instance" "instance" {
     labels        = var.labels
 
     # NETWORKING
-    dynamic "network_interface" {
-    for_each      = var.ip_addresses
-        content {
-        subnetwork         = network_interface.value.subnetwork
-        network_ip         = network_interface.value.ip_address
+    # dynamic "network_interface" {
+    # for_each      = var.ip_addresses
+    #     content {
+    #     subnetwork         = network_interface.value.subnetwork
+    #     network_ip         = network_interface.value.ip_address
+    #     }
+    # }
+
+    network_interface {
+        network = "default"
+        
+        access_config {
         }
     }
 
@@ -50,4 +57,28 @@ resource "google_compute_instance" "instance" {
       email               = var.service_account
       scopes              = ["cloud-platform"]
     }   
+
+    metadata = {
+      ssh-keys = "${var.user}:${file(var.publickey)}"
+    }
+
+    connection {
+      # Aquí proporcionas la configuración de conexión SSH a la instancia.
+      type        = "ssh"
+      user        = var.user
+      private_key = file(var.privatekey)
+      host        = google_compute_instance.instance.network_interface[0].access_config[0].nat_ip
+    }
+
+    provisioner "file" {
+        source      = "./variables.tf"
+        destination = "/tmp/test.tf"
+    }
+    provisioner "remote-exec" {
+      inline = [ 
+          "sudo apt-update -y",
+          "sudo apt-get install -y ansible",
+       ]
+      
+    }
 }

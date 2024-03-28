@@ -1,0 +1,245 @@
+jenkins:
+  systemMessage: "\n\nDemo setup for Jenkins Configuration as Code plugin - Devsu......\n"
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: ${JENKINS_ADMIN_ID}
+          password: ${JENKINS_ADMIN_PASSWORD}
+  authorizationStrategy:
+    globalMatrix:
+      permissions:
+        - "Overall/Administer:devsu"
+        - "Overall/Read:authenticated"
+jobs:
+  # Devsu Projects
+  - script: folder('devsu-pipelines')
+  - script: folder('devsu-pipelines/infrastructure')
+  - script: folder('devsu-pipelines/infrastructure/azure')
+  - script: >
+      pipelineJob('devsu-pipelines/infrastructure/azure/main') {
+          definition {
+              cpsScm {
+                  scm {
+                      git {
+                         remote {
+                          url('https://github.com/eingaruca/demo-devops-java.git')
+                         }
+                         branch('*/main') 
+                      }
+                      
+                  }
+              }
+          }
+      }
+  - script: folder('devsu-pipelines/infrastructure/gcp')
+  - script: >
+      pipelineJob('devsu-pipelines/infrastructure/gcp/main') {
+          definition {
+              cpsScm {
+                  scm {
+                      git {
+                         remote {
+                          url('https://github.com/eingaruca/demo-devops-java.git')
+                         }
+                         branch('*/main') 
+                      }
+                      
+                  }
+              }
+          }
+      }
+  - script: folder('devsu-pipelines/infrastructure/aws')
+  - script: >
+      pipelineJob('devsu-pipelines/infrastructure/aws/main') {
+          definition {
+              cpsScm {
+                  scm {
+                      git {
+                         remote {
+                          url('https://github.com/eingaruca/demo-devops-java.git')
+                         }
+                         branch('*/main') 
+                      }
+                      
+                  }
+              }
+          }
+      }
+  - script: folder('devsu-pipelines/infrastructure/aws')
+  - script: >
+      pipelineJob('devsu-pipelines/infrastructure/aws/main') {
+          definition {
+              cpsScm {
+                  scm {
+                      git {
+                         remote {
+                          url('https://github.com/eingaruca/demo-devops-java.git')
+                         }
+                         branch('*/main') 
+                      }
+                      
+                  }
+              }
+          }
+      }
+  - script: folder('devsu-pipelines/devops-stages')
+  - script: folder('devsu-pipelines/devops-stages/java')
+  - script: >
+      pipelineJob('devsu-pipelines/devops-stages/java/main') {
+          definition {
+              cpsScm {
+                  scm {
+                      git {
+                         remote {
+                          url('https://github.com/eingaruca/demo-devops-java.git')
+                         }
+                         branch('*/main') 
+                      }
+                      
+                  }
+              }
+          }
+      }
+  - script: >
+      pipelineJob('devsu-pipelines/devops-stages/java/dev') {
+          definition {
+              cpsScm {
+                  scm {
+                      git {
+                         remote {
+                          url('https://github.com/eingaruca/demo-devops-java.git')
+                         }
+                         branch('*/dev') 
+                      }
+                      
+                  }
+              }
+          }
+      }
+  - script: folder('devsu-pipelines/devops-stages/nodejs')
+  - script: >
+      pipelineJob('devsu-pipelines/devops-stages/nodejs/main') {
+          definition {
+              cpsScm {
+                  scm {
+                      git {
+                         remote {
+                          url('https://github.com/eingaruca/demo-devops-nodejs.git')
+                         }
+                         branch('*/main') 
+                      }
+                      
+                  }
+              }
+          }
+      }
+  - script: >
+      pipelineJob('devsu-pipelines/devops-stages/nodejs/dev') {
+          definition {
+              cpsScm {
+                  scm {
+                      git {
+                         remote {
+                          url('https://github.com/eingaruca/demo-devops-nodejs.git')
+                         }
+                         branch('*/dev') 
+                      }
+                      
+                  }
+              }
+          }
+      }
+  - script: folder('devsu-pipelines/devops-stages/python')
+  - script: >
+      pipelineJob('devsu-pipelines/devops-stages/python/main') {
+          definition {
+              cpsScm {
+                  scm {
+                      git {
+                         remote {
+                          url('https://github.com/eingaruca/demo-devops-python.git')
+                         }
+                         branch('*/main') 
+                      }
+                      
+                  }
+              }
+          }
+      }
+  - script: >
+      pipelineJob('devsu-pipelines/devops-stages/python/dev') {
+          definition {
+              cpsScm {
+                  scm {
+                      git {
+                         remote {
+                          url('https://github.com/eingaruca/demo-devops-python.git')
+                         }
+                         branch('*/dev') 
+                      }
+                      
+                  }
+              }
+          }
+      }
+security:
+  queueItemAuthenticator:
+    authenticators:
+      - global:
+          strategy: triggeringUsersAuthorizationStrategy
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - usernamePassword:
+              scope: GLOBAL
+              id: devsu_pipeline_test_token
+              username: ${GIT_USER}
+              password: ${DEVSU_PIPELINE_PASS}
+              description: devsu_pipeline_test_token
+          - string:
+              scope: GLOBAL
+              id: devsu_sonarqube_server
+              secret: ${SONAR_TOKEN}
+              description: devsu_sonarqube_server
+tool:
+  git:
+    installations:
+      - name: Default
+        home: "git"
+  sonarRunnerInstallation:
+    installations:
+    - name: "sonarqube-scanner"
+      properties:
+      - installSource:
+          installers:
+          - sonarRunnerInstaller:
+              id: "4.8.0.2856"
+# http://localhost:8080/manage/configuration-as-code/reference#LibraryRetriever-legacySCM
+unclassified:
+  location:
+    url: http://testjenkins:7777/
+  globalLibraries:
+    libraries:
+      - name: "devops-pipelines"
+        retriever:
+          modernSCM:
+            libraryPath: pipelines/stages
+            scm:
+              github:
+                # remote: "https://github.com/eingaruca/springboot_testing.git"
+                configuredByUrl: True
+                traits: 
+                 - gitBranchDiscovery
+                repositoryUrl: "https://github.com/eingaruca/devsu-pipeline-test.git"
+                credentialsId: 'devsu_pipeline_test_token'
+  sonarGlobalConfiguration:
+    buildWrapperEnabled: True
+    installations:
+      - name: "sonarqube-server"
+        serverUrl: "http://sonarqube:9000"
+        credentialsId: devsu_sonarqube_server
+      - name: "sonarqube-server-2"
+        serverUrl: "http://sonarqube:9000"
+        credentialsId: devsu_sonarqube_server

@@ -2,19 +2,25 @@
 version: '3.9'
 services:
   sonarqube:
+    container_name: sonarqube
     image: sonarqube:9.9-community
     restart: always
     ports:
       - 9000:9000
     networks:
-      bridge:
+      localnetwork:
         aliases:
           - sonarqube_net
-# networks:
-#   sonarqube_network:
-#     driver: bridge
-#     ipam:
-#       driver: default
+  jenkins:
+    container_name: jenkins
+    build:
+      context: .
+      dockerfile: Dockerfile
+networks:
+  localnetwork:
+    driver: bridge
+    ipam:
+      driver: default
 
 # Change admin Password
 # https://sunilhari.medium.com/how-to-integrate-sonarqube-and-jenkins-721d5efd3cb6
@@ -22,3 +28,5 @@ services:
 # curl -u admin:devsu2024 -X POST "http://localhost:9000/api/user_tokens/generate?login=admin&name=testToken"
 
 #squ_176e8ec2579d2dbfac2c8ed83b7a1b29e39c39e4
+
+# https://docs.sonarsource.com/sonarqube/latest/setup-and-upgrade/install-the-server/installing-sonarqube-from-docker/

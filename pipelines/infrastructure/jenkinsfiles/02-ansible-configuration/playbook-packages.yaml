@@ -1,0 +1,5 @@
+- name: Instalación de Docker en Debian
+  hosts: localhost
+  become: yes
+  roles:
+    - install-packages
