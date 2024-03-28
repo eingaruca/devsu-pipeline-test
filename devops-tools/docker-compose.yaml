@@ -14,7 +14,7 @@ services:
   jenkins:
     container_name: jenkins
     build:
-      context: ./jenkins-config
+      context: ./jenkins
       dockerfile: Dockerfile
     restart: always
     ports:
@@ -22,7 +22,7 @@ services:
       - 50000:50000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./jenkins-docker/creds/credentials.txt:/credentials.txt
+      # - ./jenkins/creds/credentials.txt:/credentials.txt
     networks:
       localnetwork:
         aliases:
