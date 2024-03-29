@@ -15,6 +15,8 @@ def call (body) {
         def buildVar        = config.build
         def testVar         = config.test
         def codeAnVar       = config.codeAnalysis
+        def deliveryVar     = config.delivery
+        def deployVar       = config.deploy
 
         projectTypeVar      = utils.formatText(projectTypeVar)
         
@@ -42,9 +44,18 @@ def call (body) {
                     // CodeAnalysisStage.init(this, projectTypeVar)
                 }
             }
-            stage ( "Docker Pull Stage" ) {
-                DeliveryStage.init(this, projectTypeVar)
+            if ( deliveryVar ){
+                stage ( "Delivery (Docker) Stage" ) {
+                    DeliveryStage.init(this, projectTypeVar)
+                }
             }
+
+            if ( deployVar ){
+                stage ( "Deploy (GKE) Stage" ) {
+                    DeployStage.init(this, projectTypeVar)
+                }
+            }
+            
 
         }
     }

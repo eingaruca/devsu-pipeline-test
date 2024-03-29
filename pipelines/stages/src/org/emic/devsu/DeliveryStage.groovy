@@ -28,10 +28,10 @@ class DeliveryStage {
     }
 
     private static void deliveryNodejsStrategy(script) {
-        script.deliveryNodejsStrategy()
+        script.deliveryNodejsStrategy() // Change class different to SpringBoot Strategy in the future
     }
 
     private static void deliveryDjangoStrategy(script) {
-        script.deliveryDjangoStrategy()
+        script.deliveryNodejsStrategy() // Change class different to SpringBoot Strategy in the future
     }
 }
