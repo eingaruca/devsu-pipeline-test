@@ -19,6 +19,7 @@ def call() {
                 // sh "apk add kubectl"
                 // sh "gcloud components install app-engine-java kubectl"
                 // sh "gcloud components install gke-gcloud-auth-plugin"
+                sh "ls -l"
                 sh "gcloud auth activate-service-account --key-file=${GKE_CREDENTIALS_FILE}"
                 sh "gcloud container clusters get-credentials devsu-cluster-test --zone europe-west1-b --project devsu-project"
                 sh "kubectl delete -f ./manifest.yaml"
