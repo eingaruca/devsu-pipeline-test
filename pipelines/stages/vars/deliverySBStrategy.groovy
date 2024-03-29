@@ -16,7 +16,7 @@ def call() {
         // Execute commands inside Docker container
         cloudsdk.inside {
             withCredentials([file(credentialsId: 'gke_devsu2', variable: 'GKE_CREDENTIALS_FILE')]) {
-                sh "apk add kubectl"
+                // sh "apk add kubectl"
                 // sh "gcloud components install app-engine-java kubectl"
                 // sh "gcloud components install gke-gcloud-auth-plugin"
                 sh "gcloud auth activate-service-account --key-file=${GKE_CREDENTIALS_FILE}"
