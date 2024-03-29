@@ -22,11 +22,11 @@ def formatText(text) {
 }
 
 def region (){
-    return "europe-wes1"
+    return "europe-west1"
 }
 
 def zone (){
-    return "europe-wes1-b"
+    return "europe-west1-b"
 }
 
 def credentials (){
