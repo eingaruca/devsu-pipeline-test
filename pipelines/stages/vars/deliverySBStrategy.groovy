@@ -13,7 +13,6 @@ def call() {
         def image = "google/cloud-sdk:470.0.0-alpine"
         def cloudsdk = docker.image(image)
         // Execute commands inside Docker container
-        def credentialsFilePath = credentials('gke_devsu').getFile().getAbsolutePath()
         cloudsdk.inside {
             withCredentials([file(credentialsId: 'gke_devsu', variable: 'GKE_CREDENTIALS_FILE')]) {
                 sh "gcloud auth activate-service-account --key-file=${GKE_CREDENTIALS_FILE}"
