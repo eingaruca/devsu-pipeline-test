@@ -14,7 +14,7 @@ def call() {
         def cloudsdk = docker.image(image)
         // Execute commands inside Docker container
         cloudsdk.inside {
-            withCredentials([file(credentialsId: 'gke_devsu', variable: 'GKE_CREDENTIALS_FILE')]) {
+            withCredentials([file(credentialsId: 'gke_devsu2', variable: 'GKE_CREDENTIALS_FILE')]) {
                 sh "gcloud auth activate-service-account --key-file=${GKE_CREDENTIALS_FILE}"
                 sh "kubectl get pods"
             }
