@@ -7,16 +7,16 @@ module "instance-test" {
   # Module
   source                = "../../modules/instance"
   #Basics
-  instance_name         = "instancia-test"
+  instance_name         = var.instance_name
   machine_type          = "n2-standard-2"
   image                 = "debian-cloud/debian-11"
   zone                  = var.zone
   region                = var.region
   # Networking
-  subnetwork            = "projects/devsu-project/regions/europe-west1/subnetworks/default"
-  ip_addresses          = [ 
-                            { ip_address = "10.132.0.10"  , subnetwork = "projects/devsu-project/regions/europe-west1/subnetworks/default"}
-                          ]
+  # subnetwork            = "projects/devsu-project/regions/europe-west1/subnetworks/default"
+  # ip_addresses          = [ 
+  #                           { ip_address = "10.132.0.10"  , subnetwork = "projects/devsu-project/regions/europe-west1/subnetworks/default"}
+  #                         ]
   # Storage
   initial_size          = "50"
 

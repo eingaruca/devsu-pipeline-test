@@ -5,13 +5,14 @@ variable "region"               {}
 variable "machine_type"         { default = "n1-standard-1" }
 variable "image"                {}
 # Networking
-variable "subnetwork"           {}
-variable "ip_addresses"         {
-    type = list(object({
-      ip_address = string
-      subnetwork = string
-    }))
-  }
+variable "network"           { default = "default" }
+variable "subnetwork"           { default = "default" }
+# variable "ip_addresses"         {
+#     type = list(object({
+#       ip_address = string
+#       subnetwork = string
+#     }))
+#   }
 
 # Storage
 variable "initial_size"         {}

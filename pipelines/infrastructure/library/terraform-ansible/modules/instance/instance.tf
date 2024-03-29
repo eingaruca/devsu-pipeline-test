@@ -15,7 +15,7 @@ resource "google_compute_instance" "instance" {
     # }
 
     network_interface {
-        network = "default"
+        network = var.network
         
         access_config {
         }
