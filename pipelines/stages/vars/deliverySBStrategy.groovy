@@ -17,6 +17,7 @@ def call() {
             withCredentials([file(credentialsId: 'gke_devsu2', variable: 'GKE_CREDENTIALS_FILE')]) {
                 sh "apk add kubectl"
                 sh "gcloud auth activate-service-account --key-file=${GKE_CREDENTIALS_FILE}"
+                sh "gcloud container clusters get-credentials devsu-cluster-test --zone europe-west1-b --project devsu-project"
                 sh "kubectl get pods"
             }
         }
