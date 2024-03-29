@@ -1,6 +1,8 @@
-def call () {
+def call (dirResources) {
     withFolderProperties {
-        sh "ls -l"
-        sh "terraform init"
+        dir (dirResources) {
+            sh "ls -l"
+            sh "terraform init"
+        }
     }
 }

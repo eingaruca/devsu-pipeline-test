@@ -23,9 +23,7 @@ def call (body) {
 
             node {
                 stage ( "Checkout Stage" ) { 
-                    dir(dirResources){
-                        CheckoutStage.init(this)    
-                    }
+                        CheckoutStage.init(this, dirResources)    
                 }
                 stage ( "Terraform Init Stage" ) {
                     dir(dirResources){
