@@ -6,8 +6,8 @@ def call() {
         sh "docker tag demosb eingaruca/dsb:v1"
         sh "docker push eingaruca/dsb:v1"
 
-        sh "docker rmi demosdb"
-        sh "docker rmi eingaruca/dsb"
+        sh "docker images -f “dangling=true” -q"
+        sh "docker rmi eingaruca/dsb:v1"
 
     }
 }
