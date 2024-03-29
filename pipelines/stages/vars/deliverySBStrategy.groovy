@@ -8,7 +8,7 @@ def call() {
 
         sh "docker rmi demosb"
         sh "docker rmi eingaruca/dsb:v1"
-        sh 'docker rmi $(docker images -f "dangling=true" -q )'
+        // sh 'docker rmi $(docker images -f "dangling=true" -q )'
 
     }
 }

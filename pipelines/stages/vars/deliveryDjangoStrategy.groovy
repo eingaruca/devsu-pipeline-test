@@ -8,6 +8,6 @@ def call() {
 
         sh "docker rmi demodjango"
         sh "docker rmi eingaruca/django:v1"
-        sh 'docker rmi $(docker images -f "dangling=true" -q )'
+        // sh 'docker rmi $(docker images -f "dangling=true" -q )'
     }
 }
