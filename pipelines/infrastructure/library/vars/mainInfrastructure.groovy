@@ -20,7 +20,7 @@ def call (body) {
         dirResources = dirResources.concat(resourceTypeVar)
 
         // Local variables
-        if (resourceType == 'instance') {
+        if (resourceTypeVar == 'instance') {
             def instanceNameVar = config.instanceName
         }
 
