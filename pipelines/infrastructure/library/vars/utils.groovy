@@ -28,3 +28,7 @@ def region (){
 def zone (){
     return "europe-wes1-b"
 }
+
+def credentials (){
+    return "../../credentials/devsu-project.json"
+}
