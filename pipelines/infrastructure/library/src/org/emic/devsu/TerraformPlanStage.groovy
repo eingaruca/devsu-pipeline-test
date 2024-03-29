@@ -1,6 +1,6 @@
 package org.emic.devsu
 
-class TerraformInitStage {
+class TerraformPlanStage {
 
     static void init (script, dirResources, instanceNameVar, projectVar) {
         script.utils.info "TerraformPlanStage", "Starting Plan"
