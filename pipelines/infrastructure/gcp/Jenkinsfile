@@ -25,4 +25,6 @@ import org.emic.devsu.*
 mainInfrastructure {
     cloudType = "gcp"
     resourceType = "instance"
+    instanceName = "newvm01"
+    project = "devsu-project"
 }
