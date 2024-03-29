@@ -5,7 +5,7 @@ provider "google" {
 
 module "devsu-cluster"{
     source              = "../../modules/k8s"
-    cluster_name        = "devsu-cluster"
+    cluster_name        = var.instance_name
     gke_version         = "1.27.8-gke.1067004"
     location            = var.region
     node_locations      = [var.zone]

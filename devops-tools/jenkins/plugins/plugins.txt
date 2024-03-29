@@ -9,6 +9,7 @@ docker-workflow:latest
 email-ext:latest
 git:latest
 github-branch-source:latest
+google-kubernetes-engine:latest
 gradle:latest
 folder-properties:latest
 job-dsl:latest
