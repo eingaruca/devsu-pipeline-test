@@ -41,8 +41,8 @@ def call (body) {
                 //Code Coverage
                 //https://medium.com/@Anu_Rag/indepth-ci-cd-of-a-maven-project-a59961e448d7
                 stage ( "Static Code Analysis Stage" ){
-                    utils.info "mainPipeline", " Code Analysis STAGE"
-                    // CodeAnalysisStage.init(this, projectTypeVar)
+                    // utils.info "mainPipeline", " Code Analysis STAGE"
+                    CodeAnalysisStage.init(this, projectTypeVar)
                 }
             }
 
