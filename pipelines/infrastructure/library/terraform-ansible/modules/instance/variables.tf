@@ -5,7 +5,7 @@ variable "region"               {}
 variable "machine_type"         { default = "n1-standard-1" }
 variable "image"                {}
 # Networking
-variable "network"           { default = "default" }
+variable "network"              { default = "default" }
 variable "subnetwork"           { default = "default" }
 # variable "ip_addresses"         {
 #     type = list(object({
