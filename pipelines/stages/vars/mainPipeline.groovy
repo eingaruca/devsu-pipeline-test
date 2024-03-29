@@ -40,10 +40,11 @@ def call (body) {
                     CodeAnalysisStage.init(this, projectTypeVar)
                 }
             }
-
             //Code Coverage
             //https://medium.com/@Anu_Rag/indepth-ci-cd-of-a-maven-project-a59961e448d7
-            
+            stage ( "Docker Pull Stage" ) {
+                DeliveryStage.init(this, projectTypeVar)
+            }
 
         }
     }
