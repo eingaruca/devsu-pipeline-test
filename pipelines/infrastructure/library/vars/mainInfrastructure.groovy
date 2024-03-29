@@ -19,7 +19,7 @@ def call (body) {
                 stage ( "Checkout Stage" ) { 
                     CheckoutStage.init(this)    
                 }
-                stage ( "Terraform init" ) {
+                stage ( "Terraform init Stage" ) {
                     TerraformInitStage.init(this)
                 }
             }
