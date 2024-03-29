@@ -6,7 +6,6 @@ class TerraformInitStage {
         script.utils.info "TerraformInitStage", "Starting init"
 
         checkoutStrategy(script)
-        checkoutInfo(script)
         
         script.utils.info "TerraformInitStage", "Finish init"
     }
