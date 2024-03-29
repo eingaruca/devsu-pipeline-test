@@ -20,8 +20,10 @@ def call (body) {
         dirResources = dirResources.concat(resourceTypeVar)
 
         // Local variables
+        echo "${resourceTypeVar}"
+        def instanceNameVar = ""
         if (resourceTypeVar == 'instance') {
-            def instanceNameVar = config.instanceName
+            instanceNameVar = config.instanceName
         }
 
         def projectVar = "devsu-project"
