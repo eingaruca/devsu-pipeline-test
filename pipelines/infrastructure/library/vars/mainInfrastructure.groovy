@@ -20,9 +20,9 @@ def call (body) {
         dirResources = dirResources.concat(resourceTypeVar)
 
         // Local variables
-        echo "${resourceTypeVar}"
         def instanceNameVar = ""
         if (resourceTypeVar == 'instance') {
+            utils.info "MainInfrastructure", "TIPO Aprovisionamiento ${resourceTypeVar}"
             instanceNameVar = config.instanceName
         }
 
