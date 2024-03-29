@@ -11,7 +11,7 @@ def call() {
         // sh 'docker rmi $(docker images -f "dangling=true" -q )'
 
         // def image = "google/cloud-sdk:470.0.0-alpine"
-        def image ="docker pull google/cloud-sdk:470.0.0"
+        def image ="google/cloud-sdk:470.0.0"
         def cloudsdk = docker.image(image)
         // Execute commands inside Docker container
         cloudsdk.inside {
