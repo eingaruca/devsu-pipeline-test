@@ -36,20 +36,16 @@ def call (body) {
 
             node {
                 stage ( "Checkout Stage" ) { 
-                    // dir(dirResources){
                     CheckoutStage.init(this)    
-                    // }
                 }
                 stage ( "Terraform Init Stage" ) {
-                    // dir(dirResources){
                     TerraformInitStage.init(this, dirResources)
-                    // }
                 }
                 stage ( "Terraform Plan Stage" ) {
-                    // dir(dirResources){
-                    echo "Terraform plan stage"
                     TerraformPlanStage.init(this, dirResources, instanceNameVar, projectVar)
-                    // }
+                }
+                stage ( "Terraform Apply Stage" ) {
+                    TerraformApplyStage.init(this, dirResources, instanceNameVar, projectVar)
                 }
             }
         }
