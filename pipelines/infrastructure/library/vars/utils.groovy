@@ -20,3 +20,11 @@ def formatText(text) {
     }
     return text
 }
+
+def region (){
+    return "europe-wes1"
+}
+
+def zone (){
+    return "europe-wes1-b"
+}

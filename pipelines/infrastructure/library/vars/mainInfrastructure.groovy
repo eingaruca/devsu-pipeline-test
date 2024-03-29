@@ -19,6 +19,17 @@ def call (body) {
 
         dirResources = dirResources.concat(resourceTypeVar)
 
+        // Local variables
+        if (resourceType == 'instance') {
+            def instanceNameVar = config.instanceName
+        }
+
+        def projectVar = "devsu-project"
+        if ( config.project != null ){
+            projectVar = config.project
+        }
+
+
         if ( cloudTypeVar != null ) {
 
             node {
@@ -28,15 +39,15 @@ def call (body) {
                     // }
                 }
                 stage ( "Terraform Init Stage" ) {
-                    dir(dirResources){
-                        TerraformInitStage.init(this, dirResources)
-                    }
+                    // dir(dirResources){
+                    TerraformInitStage.init(this, dirResources)
+                    // }
                 }
                 stage ( "Terraform Plan Stage" ) {
-                    dir(dirResources){
-                        echo "Terraform plan stage"
-                        // TerraformInitStage.init(this)
-                    }
+                    // dir(dirResources){
+                    echo "Terraform plan stage"
+                    TerraformPlanStage.init(this, dirResources, instanceNameVar, projectVar)
+                    // }
                 }
             }
         }

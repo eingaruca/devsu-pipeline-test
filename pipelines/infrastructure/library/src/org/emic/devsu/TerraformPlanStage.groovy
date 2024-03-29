@@ -2,16 +2,16 @@ package org.emic.devsu
 
 class TerraformInitStage {
 
-    static void init (script) {
+    static void init (script, dirResources, instanceNameVar, projectVar) {
         script.utils.info "TerraformPlanStage", "Starting Plan"
 
-        planStrategy(script)
+        planStrategy(script, dirResources, instanceNameVar, projectVar)
         
         script.utils.info "TerraformPlanStage", "Finish Plan"
     }
 
-    private static void planStrategy (script) {
-        script.planStrategy()
+    private static void planStrategy (script, dirResources, instanceNameVar, projectVar) {
+        script.planStrategy(dirResources, instanceNameVar, projectVar)
     }
 
 }

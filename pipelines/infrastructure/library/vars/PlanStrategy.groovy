@@ -1,6 +1,7 @@
-def call () {
+def call (dirResources, instanceNameVar, projectVar) {
     withFolderProperties {
-        sh "ls -l"
-        sh "terraform init"
+        dir (dirResources) {
+            sh "terraform plan -var 'instance_name=${instanceNameVar}' -var 'project=${instanceNameVar}' -var 'region=${utils.region}' -var 'zone=${utils.zone}'"
+        }
     }
 }
