@@ -17,3 +17,4 @@ ENV  CASC_JENKINS_CONFIG /casc.yaml
 COPY --chown=jenkins:jenkins casc/casc.yaml /casc.yaml
 RUN apk add --update docker openrc
 RUN rc-update add docker boot
+RUN apk add terraform
