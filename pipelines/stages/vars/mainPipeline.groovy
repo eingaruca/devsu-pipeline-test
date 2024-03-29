@@ -15,6 +15,7 @@ def call (body) {
         def buildVar        = config.build
         def testVar         = config.test
         def codeAnVar       = config.codeAnalysis
+        def codeCoverageVar = config.codeCoverage
         def deliveryVar     = config.delivery
         def deployVar       = config.deploy
 
@@ -31,8 +32,8 @@ def call (body) {
             // Optional Test Stage
             if ( testVar != null  ){
                 stage ( "Test Stage" ) {
-                    // TestStage.init(this, projectTypeVar, testVar)
-                    utils.info "mainPipeline", "Test STAGE"
+                    TestStage.init(this, projectTypeVar, testVar)
+                    // utils.info "mainPipeline", "Test STAGE"
                 }
             }
             // Optional Static Code Analysis Stage
@@ -44,6 +45,13 @@ def call (body) {
                     // CodeAnalysisStage.init(this, projectTypeVar)
                 }
             }
+
+            if ( codeCoverageVar ){
+                stage ( "Code Coverage Stage" ){
+                    utils.info "mainPipeline", " Code Coverage STAGE"
+                }
+            }
+
             if ( deliveryVar ){
                 stage ( "Delivery (Docker) Stage" ) {
                     DeliveryStage.init(this, projectTypeVar)
