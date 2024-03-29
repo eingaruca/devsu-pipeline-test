@@ -21,7 +21,10 @@ def call() {
                 // sh "gcloud components install gke-gcloud-auth-plugin"
                 sh "gcloud auth activate-service-account --key-file=${GKE_CREDENTIALS_FILE}"
                 sh "gcloud container clusters get-credentials devsu-cluster-test --zone europe-west1-b --project devsu-project"
-                sh "kubectl get pods -n kube-system"
+                sh "kubectl delete -f ./manifest.yaml"
+                sh "kubectl apply -f ./manifest.yaml"
+                sh "sleep 5"
+                sh "kubectl get pods"
             }
         }
 
