@@ -22,7 +22,7 @@ def call() {
                 sh "ls -l"
                 sh "gcloud auth activate-service-account --key-file=${GKE_CREDENTIALS_FILE}"
                 sh "gcloud container clusters get-credentials devsu-cluster-test --zone europe-west1-b --project devsu-project"
-                sh "kubectl delete -f ./manifest.yaml"
+                sh "kubectl delete -f ./manifest.yaml --ignore-not-found"
                 sh "kubectl apply -f ./manifest.yaml"
                 sh "sleep 5"
                 sh "kubectl get pods"
