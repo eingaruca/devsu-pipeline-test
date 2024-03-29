@@ -11,7 +11,7 @@ class TerraformPlanStage {
     }
 
     private static void planStrategy (script, dirResources, instanceNameVar, projectVar) {
-        // script.planStrategy(dirResources, instanceNameVar, projectVar)
+        script.planStrategy(dirResources, instanceNameVar, projectVar)
     }
 
 }
