@@ -3,28 +3,17 @@
 import org.emic.devsu.*
 
 /*
- * Mandatory stages: Checkout & Build
- * Mantatory Variables
- *  - Variable Name: projectType 
- *      - String
- *      - Posible values: springboot, nodejs or django
- * TESTING (Optional Stage): 
- *  - You decide if use test Variable. If you want test:
- *    - Variable Name: test
- *          - Array[Boolean, Boolean, Boolean] 
- *          - Each element:
- *              - [0] => Unit Tests
- *              - [1] => Acceptance Tests
- *              - [2] => Integration Tests
- * CODE ANALYSIS (Optional Stage): 
- *  - You decide if use codeAnalysis Variable. If you want test:
- *    - Variable Name: codeAnalysis
- *          - Boolean
- * 
+ * Stages: Checkout | Init | Plan | Apply | Post
+ * cloudType: Choose among "gcp", "azure", "aws"
+ * project: (GCP) ProjectID when the resource will be create
+ * resourceType: Choose among "instance", "gke", etc
 */
 mainInfrastructure {
     cloudType = "gcp"
+    project = "devsu-project"
     resourceType = "instance"
     instanceName = "newvm01"
-    project = "devsu-project"
 }
+
+
+
