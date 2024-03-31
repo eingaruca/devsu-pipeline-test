@@ -10,7 +10,7 @@ def call() {
         node.inside {
             unstash name: 'build'
             sh "npm install" 
-            sh "npm run test"
+            // sh "npm run test"
 
             // Execute test Coverage
             sh "npx nyc --reporter=lcov npm run test"

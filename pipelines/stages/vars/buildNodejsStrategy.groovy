@@ -13,7 +13,7 @@ def call() {
             sh "npm install"
         }
         // Make stash to use in other stages
-        stash name: 'build' 
+        stash name: 'build' , includes: '*'
         utils.info "BuildStage", "Finish NodeJS Strategy"
     }
 }
