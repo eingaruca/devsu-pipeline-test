@@ -1,17 +1,9 @@
 def call() {
-    withFolderProperties{
-        utils.info "CodeCoverageStage", "Node.js Strategy"
-    }
-}
-
-
-
-def call() {
     withFolderProperties {
         utils.info "CodeCoverageStage", "Node.js Strategy"
 
         // Define Docker image
-        def image = "node:alpine"
+        def image = "node:20-alpine3.18"
         def node = docker.image(image)
 
         // Execute commands inside Docker container
