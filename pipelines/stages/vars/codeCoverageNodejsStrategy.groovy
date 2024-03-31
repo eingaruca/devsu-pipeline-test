@@ -12,25 +12,12 @@ def call() {
             sh "npm install" 
             sh "npm run test"
 
-            // Ejecutar pruebas con cobertura
+            // Execute test Coverage
             sh "npx nyc --reporter=lcov npm run test"
 
-            // Generar informe de cobertura en HTML
+            // Generate inform
             sh "npx nyc report --reporter=html"
         }
-
-        // Archivar resultados de pruebas JUnit (si aplicable)
-        step([$class: 'JUnitResultArchiver', testResults: '**/junit.xml'])
-
-        // Publicar informe de cobertura en HTML
-        publishHTML(target: [
-            allowMissing: false,
-            alwaysLinkToLastBuild: false,
-            keepAll: true,
-            reportDir: 'coverage',
-            reportFiles: 'index.html',
-            reportName: "Code Coverage Report"
-        ])
 
         utils.info "CodeCoverageStage", "Finish Node.js Strategy"
     }
