@@ -32,8 +32,8 @@ def call (body) {
             // Optional Test Stage
             if ( testVar != null  ){
                 stage ( "Test Stage" ) {
-                    TestStage.init(this, projectTypeVar, testVar)
-                    // utils.info "mainPipeline", "Test STAGE"
+                    // TestStage.init(this, projectTypeVar, testVar)
+                    utils.info "mainPipeline", "Test STAGE"
                 }
             }
             // Optional Static Code Analysis Stage
@@ -41,8 +41,8 @@ def call (body) {
                 //Code Coverage
                 //https://medium.com/@Anu_Rag/indepth-ci-cd-of-a-maven-project-a59961e448d7
                 stage ( "Static Code Analysis Stage" ){
-                    // utils.info "mainPipeline", " Code Analysis STAGE"
-                    CodeAnalysisStage.init(this, projectTypeVar)
+                    utils.info "mainPipeline", " Code Analysis STAGE"
+                    // CodeAnalysisStage.init(this, projectTypeVar)
                 }
             }
 
