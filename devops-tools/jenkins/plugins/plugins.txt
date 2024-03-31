@@ -12,6 +12,7 @@ github-branch-source:latest
 google-kubernetes-engine:latest
 gradle:latest
 folder-properties:latest
+jacoco:latest
 job-dsl:latest
 mailer:latest
 matrix-auth:latest
