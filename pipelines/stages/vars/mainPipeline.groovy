@@ -46,18 +46,22 @@ def call (body) {
                 }
             }
 
+            // Optional Code Coverage Stage
             if ( codeCoverageVar ){
                 stage ( "Code Coverage Stage" ){
-                    utils.info "mainPipeline", " Code Coverage STAGE"
+                    // utils.info "mainPipeline", " Code Coverage STAGE"
+                    CodeCoverageStage.init(this, projectTypeVar)
                 }
             }
 
+            // Optional Delivery Stage
             if ( deliveryVar ){
                 stage ( "Delivery (Docker) Stage" ) {
                     DeliveryStage.init(this, projectTypeVar)
                 }
             }
 
+            // Optional Deploy Stage
             if ( deployVar ){
                 stage ( "Deploy (GKE) Stage" ) {
                     DeployStage.init(this, projectTypeVar)
