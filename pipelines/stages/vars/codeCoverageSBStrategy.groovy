@@ -10,10 +10,11 @@ def call() {
             // sh "java -version"
             unstash name : 'build'
             sh "mvn clean test jacoco:report"
+            sh "ls -l"
             jacoco (
-                execPattern: '**/target/jacoco/*.exec',
-                classPattern: '**/target/classes/java/main',
-                sourcePattern: '**/src/main'
+                execPattern: 'target/jacoco/*.exec',
+                classPattern: 'target/classes/java/main',
+                sourcePattern: 'src/main'
             )
         }
 
