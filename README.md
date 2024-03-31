@@ -56,10 +56,10 @@ Finalizado esto, podremos ver nuestro jenkins levantado y ejecutar los pipelines
 - Logs de la ejecución de este paso: [Log](Log-devops-tools.md)
 
 ## 2. Infraestructura
-## 2.1 Introducción
+### 2.1 Introducción
 La intención de la infraestructura desplegada es que pueda utilizarse en diferentes entornos. 
 
-## 2.2 Diagrama
+### 2.2 Diagrama
 ![Diagrama de Infraestructura](images/ArchitectureDiagram-Infrastructure.webp)
 
 Para la solución se ha utilizado:
@@ -71,7 +71,7 @@ Para la solución se ha utilizado:
   - Google Compute Instance: Instancias
   - Google Kubernetes Engine: GKE
 
-## 2.3 Despliegue 
+### 2.3 Despliegue 
 
 El despliegue de la solución constó de 2 etapas:
 - Aprovisionamiento el Google Cloud de la instancia y GKE Clúster utilizando scripts los módulos de terraform.

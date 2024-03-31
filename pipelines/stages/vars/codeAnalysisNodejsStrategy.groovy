@@ -10,7 +10,6 @@ def call(){
 
         withSonarQubeEnv(sonarqubeServer){
             sh "echo ${pwd}"
-            sh "npm --version"
             sh "${scanner}/bin/sonar-scanner -Dsonar.projectKey=${project} -Dsonar.sources=."
             sh 'sleep 10'
         }
