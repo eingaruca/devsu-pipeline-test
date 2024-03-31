@@ -15,7 +15,7 @@ def call() {
         }
 
         // Make stash to use in other stages
-        stash name: 'build' , includes: '**/*'
+        stash name: 'build' , includes: '*'
 
         utils.info "BuildStage", "Finish Django Strategy"
     }
