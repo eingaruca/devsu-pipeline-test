@@ -8,7 +8,7 @@ def call() {
         // Execute commands inside Docker container
         python.inside {
             unstash name: 'build'
-            // sh "pip install -r requirements.txt"
+            sh "pip install -r requirements.txt"
             sh "pip install coverage"
             sh "python manage.py migrate"
 
