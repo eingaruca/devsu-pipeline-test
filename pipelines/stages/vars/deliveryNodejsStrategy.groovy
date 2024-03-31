@@ -8,6 +8,16 @@ def call() {
 
         sh "docker rmi demonodejs"
         sh "docker rmi eingaruca/nodejs:v1"
+
+
+
+
+        sh "docker build -t demonodejs ."
+        sh "docker tag demonodejs eingaruca/nodejs:v1.1"
+        sh "docker push eingaruca/nodejs:v1.1"
+
+        sh "docker rmi demonodejs"
+        sh "docker rmi eingaruca/nodejs:v1.1"
         // sh 'docker rmi $(docker images -f "dangling=true" -q )'
     }
 }
