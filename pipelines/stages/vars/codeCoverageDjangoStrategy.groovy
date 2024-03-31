@@ -22,3 +22,4 @@ def call() {
 
         utils.info "CodeCoverageStage", "Finish Django Strategy"
     }
+}
