@@ -1,0 +1,729 @@
+Started by user devsu
+Running as devsu
+Checking out git https://github.com/eingaruca/devsu-pipeline-test.git into /var/jenkins_home/workspace/devsu-pipelines/infrastructure/gcp/main@script/1e274baf8e67b91d39c277fdb97aa7bf23bd273e52601c6f1066acf546d68ab2 to read pipelines/infrastructure/gcp/Jenkinsfile
+The recommended git tool is: NONE
+using credential devsu_pipeline_test_token
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/devsu-pipelines/infrastructure/gcp/main@script/1e274baf8e67b91d39c277fdb97aa7bf23bd273e52601c6f1066acf546d68ab2/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/eingaruca/devsu-pipeline-test.git # timeout=10
+Fetching upstream changes from https://github.com/eingaruca/devsu-pipeline-test.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.38.4'
+using GIT_ASKPASS to set credentials devsu_pipeline_test_token
+ > git fetch --tags --force --progress -- https://github.com/eingaruca/devsu-pipeline-test.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/dev^{commit} # timeout=10
+Checking out Revision ceede8edab4187d6d5fa0ae4569d08890cf7862b (refs/remotes/origin/dev)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f ceede8edab4187d6d5fa0ae4569d08890cf7862b # timeout=10
+Commit message: "feat: Developing pipeline GCP"
+ > git rev-list --no-walk dc8e023e0fa8276a5bdb32a77b786aac18ad8788 # timeout=10
+Loading library infrastructure-pipelines@dev
+Examining eingaruca/devsu-pipeline-test
+Attempting to resolve dev as a branch
+Resolved dev as branch dev at revision ceede8edab4187d6d5fa0ae4569d08890cf7862b
+The recommended git tool is: NONE
+using credential devsu_pipeline_test_token
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/devsu-pipelines/infrastructure/gcp/main@libs/d701aff446170be1dce3a185e89318577e9bd31523aab28881e2d7b2b6ba89ec/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/eingaruca/devsu-pipeline-test.git # timeout=10
+Fetching without tags
+Fetching upstream changes from https://github.com/eingaruca/devsu-pipeline-test.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.38.4'
+using GIT_ASKPASS to set credentials devsu_pipeline_test_token
+ > git fetch --no-tags --force --progress -- https://github.com/eingaruca/devsu-pipeline-test.git +refs/heads/dev:refs/remotes/origin/dev # timeout=10
+Checking out Revision ceede8edab4187d6d5fa0ae4569d08890cf7862b (dev)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f ceede8edab4187d6d5fa0ae4569d08890cf7862b # timeout=10
+Commit message: "feat: Developing pipeline GCP"
+[Pipeline] Start of Pipeline
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] echo
+[INFO] [mainInfrastructure] Starting Pipeline
+[Pipeline] echo
+[INFO] [MainInfrastructure] TIPO Aprovisionamiento instance
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/devsu-pipelines/infrastructure/gcp/main
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout Stage)
+[Pipeline] echo
+[INFO] [CheckoutStage] Starting checkout
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] echo
+[INFO] [CheckoutStage] Starting CheckoutStrategy scm
+[Pipeline] checkout
+The recommended git tool is: NONE
+using credential devsu_pipeline_test_token
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/devsu-pipelines/infrastructure/gcp/main/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/eingaruca/devsu-pipeline-test.git # timeout=10
+Fetching upstream changes from https://github.com/eingaruca/devsu-pipeline-test.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.38.4'
+using GIT_ASKPASS to set credentials devsu_pipeline_test_token
+ > git fetch --tags --force --progress -- https://github.com/eingaruca/devsu-pipeline-test.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/dev^{commit} # timeout=10
+Checking out Revision ceede8edab4187d6d5fa0ae4569d08890cf7862b (refs/remotes/origin/dev)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f ceede8edab4187d6d5fa0ae4569d08890cf7862b # timeout=10
+Commit message: "feat: Developing pipeline GCP"
+[Pipeline] echo
+[INFO] [CheckoutStage] Finish CheckoutStrategy scm
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] echo
+[INFO] [CheckoutStage] BRANCH: */dev
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] echo
+[INFO] [CheckoutStage] Finish checkout
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Terraform Init Stage)
+[Pipeline] echo
+[INFO] [TerraformInitStage] Starting init
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/devsu-pipelines/infrastructure/gcp/main/pipelines/infrastructure/library/terraform-ansible/resources/instance
+[Pipeline] {
+[Pipeline] sh
++ terraform init
+[0m[1mInitializing modules...[0m
+
+[0m[1mInitializing the backend...[0m
+
+[0m[1mInitializing provider plugins...[0m
+- Reusing previous version of hashicorp/google from the dependency lock file
+- Installing hashicorp/google v5.22.0...
+- Installed hashicorp/google v5.22.0 (signed by HashiCorp)
+
+Terraform has made some changes to the provider dependency selections recorded
+in the .terraform.lock.hcl file. Review those changes and commit them to your
+version control system if they represent changes you intended to make.
+
+[0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+[0m[32m
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.[0m
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] echo
+[INFO] [TerraformInitStage] Finish init
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Terraform Plan Stage)
+[Pipeline] echo
+[INFO] [TerraformPlanStage] Starting Plan
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/devsu-pipelines/infrastructure/gcp/main/pipelines/infrastructure/library/terraform-ansible/resources/instance
+[Pipeline] {
+[Pipeline] sh
++ terraform plan -var 'instance_name=newvm01' -var 'project=devsu-project' -var 'credentials=../../credentials/devsu-project.json' -var 'region=europe-west1' -var 'zone=europe-west1-b'
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create
+[0m
+Terraform will perform the following actions:
+
+[1m  # module.instance-test.google_compute_instance.instance[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "google_compute_instance" "instance" {
+      [32m+[0m [0m[1m[0mallow_stopping_for_update[0m[0m = true
+      [32m+[0m [0m[1m[0mcan_ip_forward[0m[0m            = false
+      [32m+[0m [0m[1m[0mcpu_platform[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mcurrent_status[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mdeletion_protection[0m[0m       = false
+      [32m+[0m [0m[1m[0meffective_labels[0m[0m          = {
+          [32m+[0m [0m"customer-id"  = "devsu"
+          [32m+[0m [0m"environment"  = "test"
+          [32m+[0m [0m"service-type" = "sonarqube"
+        }
+      [32m+[0m [0m[1m[0mguest_accelerator[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0minstance_id[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mlabel_fingerprint[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mlabels[0m[0m                    = {
+          [32m+[0m [0m"customer-id"  = "devsu"
+          [32m+[0m [0m"environment"  = "test"
+          [32m+[0m [0m"service-type" = "sonarqube"
+        }
+      [32m+[0m [0m[1m[0mmachine_type[0m[0m              = "n2-standard-2"
+      [32m+[0m [0m[1m[0mmetadata[0m[0m                  = {
+          [32m+[0m [0m"ssh-keys" = <<-EOT
+                eldomanu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOW+WM65Y274ioTjFThz1t3xQZ1ZtbQtrWm7MZyw/Pxx82t0GwnoU198agwKb8FVuIXM+AckKawsQKAhZhU8jm/MfUPwBZfrUZWMz+7ytmo4Dcrn017a/NX0e9aGNq+laSEa7O/SnADafngNxlxXd6C+qmJGk08gm56QFhCcO4v6QJex/8CuSchmQwdSuVUoIMQRhj7LcOHYIeaUFE9zp9LXEG0ZUjcmOeq4vh6GSHuO0M1RCF0Oi6v5YMZzg3AXFmvcOU2/fBQbiuLACCVIWFWp8R/RwtnJX9u1t8w+vsZD3g3cCG6rzHW3a5beJM8JXp0i3GWlnQ+lv7LZaPfj8Z eldomanu
+            EOT
+        }
+      [32m+[0m [0m[1m[0mmetadata_fingerprint[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mmin_cpu_platform[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                      = "newvm01"
+      [32m+[0m [0m[1m[0mproject[0m[0m                   = "devsu-project"
+      [32m+[0m [0m[1m[0mself_link[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mtags_fingerprint[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mterraform_labels[0m[0m          = {
+          [32m+[0m [0m"customer-id"  = "devsu"
+          [32m+[0m [0m"environment"  = "test"
+          [32m+[0m [0m"service-type" = "sonarqube"
+        }
+      [32m+[0m [0m[1m[0mzone[0m[0m                      = "europe-west1-b"
+
+      [32m+[0m [0mboot_disk {
+          [32m+[0m [0m[1m[0mauto_delete[0m[0m                = true
+          [32m+[0m [0m[1m[0mdevice_name[0m[0m                = "newvm01"
+          [32m+[0m [0m[1m[0mdisk_encryption_key_sha256[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mkms_key_self_link[0m[0m          = (known after apply)
+          [32m+[0m [0m[1m[0mmode[0m[0m                       = "READ_WRITE"
+          [32m+[0m [0m[1m[0msource[0m[0m                     = (known after apply)
+
+          [32m+[0m [0minitialize_params {
+              [32m+[0m [0m[1m[0mimage[0m[0m                  = "debian-cloud/debian-11"
+              [32m+[0m [0m[1m[0mlabels[0m[0m                 = (known after apply)
+              [32m+[0m [0m[1m[0mprovisioned_iops[0m[0m       = (known after apply)
+              [32m+[0m [0m[1m[0mprovisioned_throughput[0m[0m = (known after apply)
+              [32m+[0m [0m[1m[0msize[0m[0m                   = 50
+              [32m+[0m [0m[1m[0mtype[0m[0m                   = "pd-balanced"
+            }
+        }
+
+      [32m+[0m [0mconfidential_instance_config {
+          [32m+[0m [0m[1m[0menable_confidential_compute[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mnetwork_interface {
+          [32m+[0m [0m[1m[0minternal_ipv6_prefix_length[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mipv6_access_type[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mipv6_address[0m[0m                = (known after apply)
+          [32m+[0m [0m[1m[0mname[0m[0m                        = (known after apply)
+          [32m+[0m [0m[1m[0mnetwork[0m[0m                     = "default"
+          [32m+[0m [0m[1m[0mnetwork_ip[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0mstack_type[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0msubnetwork[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0msubnetwork_project[0m[0m          = (known after apply)
+
+          [32m+[0m [0maccess_config {
+              [32m+[0m [0m[1m[0mnat_ip[0m[0m       = (known after apply)
+              [32m+[0m [0m[1m[0mnetwork_tier[0m[0m = (known after apply)
+            }
+        }
+
+      [32m+[0m [0mreservation_affinity {
+          [32m+[0m [0m[1m[0mtype[0m[0m = (known after apply)
+
+          [32m+[0m [0mspecific_reservation {
+              [32m+[0m [0m[1m[0mkey[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mvalues[0m[0m = (known after apply)
+            }
+        }
+
+      [32m+[0m [0mscheduling {
+          [32m+[0m [0m[1m[0mautomatic_restart[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0minstance_termination_action[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mmin_node_cpus[0m[0m               = (known after apply)
+          [32m+[0m [0m[1m[0mon_host_maintenance[0m[0m         = (known after apply)
+          [32m+[0m [0m[1m[0mpreemptible[0m[0m                 = (known after apply)
+          [32m+[0m [0m[1m[0mprovisioning_model[0m[0m          = (known after apply)
+
+          [32m+[0m [0mlocal_ssd_recovery_timeout {
+              [32m+[0m [0m[1m[0mnanos[0m[0m   = (known after apply)
+              [32m+[0m [0m[1m[0mseconds[0m[0m = (known after apply)
+            }
+
+          [32m+[0m [0mnode_affinities {
+              [32m+[0m [0m[1m[0mkey[0m[0m      = (known after apply)
+              [32m+[0m [0m[1m[0moperator[0m[0m = (known after apply)
+              [32m+[0m [0m[1m[0mvalues[0m[0m   = (known after apply)
+            }
+        }
+
+      [32m+[0m [0mservice_account {
+          [32m+[0m [0m[1m[0memail[0m[0m  = "admin-sa-devsuproject@devsu-project.iam.gserviceaccount.com"
+          [32m+[0m [0m[1m[0mscopes[0m[0m = [
+              [32m+[0m [0m"https://www.googleapis.com/auth/cloud-platform",
+            ]
+        }
+    }
+
+[0m[1mPlan:[0m 1 to add, 0 to change, 0 to destroy.
+[0m[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] echo
+[INFO] [TerraformPlanStage] Finish Plan
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Terraform Apply Stage)
+[Pipeline] echo
+[INFO] [TerraformApplyStage] Starting Apply
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/devsu-pipelines/infrastructure/gcp/main/pipelines/infrastructure/library/terraform-ansible/resources/instance
+[Pipeline] {
+[Pipeline] sh
++ terraform apply -var 'instance_name=newvm01' -var 'project=devsu-project' -var 'credentials=../../credentials/devsu-project.json' -var 'region=europe-west1' -var 'zone=europe-west1-b' --auto-approve
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create
+[0m
+Terraform will perform the following actions:
+
+[1m  # module.instance-test.google_compute_instance.instance[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "google_compute_instance" "instance" {
+      [32m+[0m [0m[1m[0mallow_stopping_for_update[0m[0m = true
+      [32m+[0m [0m[1m[0mcan_ip_forward[0m[0m            = false
+      [32m+[0m [0m[1m[0mcpu_platform[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mcurrent_status[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mdeletion_protection[0m[0m       = false
+      [32m+[0m [0m[1m[0meffective_labels[0m[0m          = {
+          [32m+[0m [0m"customer-id"  = "devsu"
+          [32m+[0m [0m"environment"  = "test"
+          [32m+[0m [0m"service-type" = "sonarqube"
+        }
+      [32m+[0m [0m[1m[0mguest_accelerator[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0minstance_id[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mlabel_fingerprint[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mlabels[0m[0m                    = {
+          [32m+[0m [0m"customer-id"  = "devsu"
+          [32m+[0m [0m"environment"  = "test"
+          [32m+[0m [0m"service-type" = "sonarqube"
+        }
+      [32m+[0m [0m[1m[0mmachine_type[0m[0m              = "n2-standard-2"
+      [32m+[0m [0m[1m[0mmetadata[0m[0m                  = {
+          [32m+[0m [0m"ssh-keys" = <<-EOT
+                eldomanu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOW+WM65Y274ioTjFThz1t3xQZ1ZtbQtrWm7MZyw/Pxx82t0GwnoU198agwKb8FVuIXM+AckKawsQKAhZhU8jm/MfUPwBZfrUZWMz+7ytmo4Dcrn017a/NX0e9aGNq+laSEa7O/SnADafngNxlxXd6C+qmJGk08gm56QFhCcO4v6QJex/8CuSchmQwdSuVUoIMQRhj7LcOHYIeaUFE9zp9LXEG0ZUjcmOeq4vh6GSHuO0M1RCF0Oi6v5YMZzg3AXFmvcOU2/fBQbiuLACCVIWFWp8R/RwtnJX9u1t8w+vsZD3g3cCG6rzHW3a5beJM8JXp0i3GWlnQ+lv7LZaPfj8Z eldomanu
+            EOT
+        }
+      [32m+[0m [0m[1m[0mmetadata_fingerprint[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mmin_cpu_platform[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                      = "newvm01"
+      [32m+[0m [0m[1m[0mproject[0m[0m                   = "devsu-project"
+      [32m+[0m [0m[1m[0mself_link[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mtags_fingerprint[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mterraform_labels[0m[0m          = {
+          [32m+[0m [0m"customer-id"  = "devsu"
+          [32m+[0m [0m"environment"  = "test"
+          [32m+[0m [0m"service-type" = "sonarqube"
+        }
+      [32m+[0m [0m[1m[0mzone[0m[0m                      = "europe-west1-b"
+
+      [32m+[0m [0mboot_disk {
+          [32m+[0m [0m[1m[0mauto_delete[0m[0m                = true
+          [32m+[0m [0m[1m[0mdevice_name[0m[0m                = "newvm01"
+          [32m+[0m [0m[1m[0mdisk_encryption_key_sha256[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mkms_key_self_link[0m[0m          = (known after apply)
+          [32m+[0m [0m[1m[0mmode[0m[0m                       = "READ_WRITE"
+          [32m+[0m [0m[1m[0msource[0m[0m                     = (known after apply)
+
+          [32m+[0m [0minitialize_params {
+              [32m+[0m [0m[1m[0mimage[0m[0m                  = "debian-cloud/debian-11"
+              [32m+[0m [0m[1m[0mlabels[0m[0m                 = (known after apply)
+              [32m+[0m [0m[1m[0mprovisioned_iops[0m[0m       = (known after apply)
+              [32m+[0m [0m[1m[0mprovisioned_throughput[0m[0m = (known after apply)
+              [32m+[0m [0m[1m[0msize[0m[0m                   = 50
+              [32m+[0m [0m[1m[0mtype[0m[0m                   = "pd-balanced"
+            }
+        }
+
+      [32m+[0m [0mconfidential_instance_config {
+          [32m+[0m [0m[1m[0menable_confidential_compute[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mnetwork_interface {
+          [32m+[0m [0m[1m[0minternal_ipv6_prefix_length[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mipv6_access_type[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mipv6_address[0m[0m                = (known after apply)
+          [32m+[0m [0m[1m[0mname[0m[0m                        = (known after apply)
+          [32m+[0m [0m[1m[0mnetwork[0m[0m                     = "default"
+          [32m+[0m [0m[1m[0mnetwork_ip[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0mstack_type[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0msubnetwork[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0msubnetwork_project[0m[0m          = (known after apply)
+
+          [32m+[0m [0maccess_config {
+              [32m+[0m [0m[1m[0mnat_ip[0m[0m       = (known after apply)
+              [32m+[0m [0m[1m[0mnetwork_tier[0m[0m = (known after apply)
+            }
+        }
+
+      [32m+[0m [0mreservation_affinity {
+          [32m+[0m [0m[1m[0mtype[0m[0m = (known after apply)
+
+          [32m+[0m [0mspecific_reservation {
+              [32m+[0m [0m[1m[0mkey[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mvalues[0m[0m = (known after apply)
+            }
+        }
+
+      [32m+[0m [0mscheduling {
+          [32m+[0m [0m[1m[0mautomatic_restart[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0minstance_termination_action[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mmin_node_cpus[0m[0m               = (known after apply)
+          [32m+[0m [0m[1m[0mon_host_maintenance[0m[0m         = (known after apply)
+          [32m+[0m [0m[1m[0mpreemptible[0m[0m                 = (known after apply)
+          [32m+[0m [0m[1m[0mprovisioning_model[0m[0m          = (known after apply)
+
+          [32m+[0m [0mlocal_ssd_recovery_timeout {
+              [32m+[0m [0m[1m[0mnanos[0m[0m   = (known after apply)
+              [32m+[0m [0m[1m[0mseconds[0m[0m = (known after apply)
+            }
+
+          [32m+[0m [0mnode_affinities {
+              [32m+[0m [0m[1m[0mkey[0m[0m      = (known after apply)
+              [32m+[0m [0m[1m[0moperator[0m[0m = (known after apply)
+              [32m+[0m [0m[1m[0mvalues[0m[0m   = (known after apply)
+            }
+        }
+
+      [32m+[0m [0mservice_account {
+          [32m+[0m [0m[1m[0memail[0m[0m  = "admin-sa-devsuproject@devsu-project.iam.gserviceaccount.com"
+          [32m+[0m [0m[1m[0mscopes[0m[0m = [
+              [32m+[0m [0m"https://www.googleapis.com/auth/cloud-platform",
+            ]
+        }
+    }
+
+[0m[1mPlan:[0m 1 to add, 0 to change, 0 to destroy.
+[0m[0m[1mmodule.instance-test.google_compute_instance.instance: Creating...[0m[0m
+[0m[1mmodule.instance-test.google_compute_instance.instance: Still creating... [10s elapsed][0m[0m
+[0m[1mmodule.instance-test.google_compute_instance.instance: Provisioning with 'file'...[0m[0m
+[0m[1mmodule.instance-test.google_compute_instance.instance: Provisioning with 'remote-exec'...[0m[0m
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mConnecting to remote host via SSH...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  Host: 34.79.10.221
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  User: eldomanu
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  Password: false
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  Private key: true
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  Certificate: false
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  SSH Agent: false
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  Checking Host Key: false
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  Target Platform: unix
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mConnected!
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0msudo: apt-update: command not found
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mReading package lists... 0%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mReading package lists... 100%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mReading package lists... Done
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mBuilding dependency tree... 0%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mBuilding dependency tree... 0%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mBuilding dependency tree... 50%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mBuilding dependency tree... 50%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mBuilding dependency tree... Done
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mReading state information... 0%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mReading state information... 0%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mReading state information... Done
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mThe following additional packages will be installed:
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  ieee-data libyaml-0-2
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-argcomplete
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-cffi-backend
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-cryptography
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-distutils python3-dnspython
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-jinja2 python3-jmespath
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-kerberos python3-lib2to3
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-libcloud python3-lockfile
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-markupsafe python3-netaddr
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-ntlm-auth python3-packaging
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-pycryptodome
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-pyparsing
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-requests-kerberos
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-requests-ntlm
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-requests-toolbelt
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-selinux python3-simplejson
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-winrm python3-xmltodict
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-yaml
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSuggested packages:
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  cowsay sshpass
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python-cryptography-doc
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-cryptography-vectors
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-sniffio python3-trio
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python-jinja2-doc
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python-lockfile-doc ipython3
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python-netaddr-docs
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python-pyparsing-doc
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mThe following NEW packages will be installed:
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  ansible ieee-data libyaml-0-2
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-argcomplete
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-cffi-backend
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-cryptography
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-distutils python3-dnspython
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-jinja2 python3-jmespath
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-kerberos python3-lib2to3
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-libcloud python3-lockfile
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-markupsafe python3-netaddr
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-ntlm-auth python3-packaging
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-pycryptodome
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-pyparsing
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-requests-kerberos
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-requests-ntlm
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-requests-toolbelt
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-selinux python3-simplejson
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-winrm python3-xmltodict
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m  python3-yaml
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m0 upgraded, 28 newly installed, 0 to remove and 0 not upgraded.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mNeed to get 32.9 MB of archives.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mAfter this operation, 280 MB of additional disk space will be used.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m0% [Working]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:1 https://deb.debian.org/debian bullseye/main amd64 python3-cffi-backend amd64 1.14.5-1 [85.8 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m0% [1 python3-cffi-backend 11.0 kB/85.8
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m1% [Working]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:2 https://deb.debian.org/debian bullseye/main amd64 python3-cryptography amd64 3.3.2-1 [223 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m1% [2 python3-cryptography 16.4 kB/223
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m2% [Waiting for headers]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:3 https://deb.debian.org/debian bullseye/main amd64 python3-markupsafe amd64 1.1.1-1+b3 [15.2 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m2% [3 python3-markupsafe 0 B/15.2 kB 0%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m3% [Waiting for headers]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:4 https://deb.debian.org/debian bullseye/main amd64 python3-jinja2 all 2.11.3-1 [114 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m3% [4 python3-jinja2 0 B/114 kB 0%]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m4% [Waiting for headers]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:5 https://deb.debian.org/debian bullseye/main amd64 python3-pyparsing all 2.4.7-1 [109 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m4% [5 python3-pyparsing 17.8 kB/109 kB
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m5% [Waiting for headers]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:6 https://deb.debian.org/debian bullseye/main amd64 python3-packaging all 20.9-2 [33.5 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m5% [6 python3-packaging 33.5 kB/33.5 kB
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m6% [Working]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:7 https://deb.debian.org/debian bullseye/main amd64 libyaml-0-2 amd64 0.2.2-1 [49.6 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m6% [7 libyaml-0-2 0 B/49.6 kB 0%]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m7% [Waiting for headers]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:8 https://deb.debian.org/debian bullseye/main amd64 python3-yaml amd64 5.3.1-5 [138 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m7% [8 python3-yaml 0 B/138 kB 0%]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m8% [Waiting for headers]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:9 https://deb.debian.org/debian bullseye/main amd64 python3-pycryptodome amd64 3.9.7+dfsg1-1+b2 [9910 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m8% [9 python3-pycryptodome 0 B/9910 kB
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m32% [Waiting for headers]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:10 https://deb.debian.org/debian bullseye/main amd64 python3-lib2to3 all 3.9.2-1 [77.8 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m32% [10 python3-lib2to3 14.6 kB/77.8 kB
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m33% [Working]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:11 https://deb.debian.org/debian bullseye/main amd64 python3-distutils all 3.9.2-1 [143 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m33% [11 python3-distutils 0 B/143 kB 0%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m34% [Waiting for headers]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:12 https://deb.debian.org/debian bullseye/main amd64 python3-dnspython all 2.0.0-1 [103 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m34% [12 python3-dnspython 38.0 kB/103 k
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m35% [Working]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:13 https://deb.debian.org/debian bullseye/main amd64 ieee-data all 20210605.1 [1889 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m35% [13 ieee-data 0 B/1889 kB 0%]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m41% [Working]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:14 https://deb.debian.org/debian bullseye/main amd64 python3-netaddr all 0.7.19-5 [253 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m41% [14 python3-netaddr 11.5 kB/253 kB
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m42% [Waiting for headers]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:15 https://deb.debian.org/debian bullseye/main amd64 ansible all 2.10.7+merged+base+2.10.8+dfsg-1 [17.7 MB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m42% [15 ansible 19.9 kB/17.7 MB 0%]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m86% [Waiting for headers]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:16 https://deb.debian.org/debian bullseye/main amd64 python3-argcomplete all 1.8.1-1.5 [29.7 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m86% [16 python3-argcomplete 28.5 kB/29.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m87% [Working]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:17 https://deb.debian.org/debian bullseye/main amd64 python3-jmespath all 0.10.0-1 [21.7 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m87% [17 python3-jmespath 8192 B/21.7 kB
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m87% [Working]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:18 https://deb.debian.org/debian bullseye/main amd64 python3-kerberos amd64 1.1.14-3.1+b3 [24.1 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m87% [18 python3-kerberos 24.1 kB/24.1 k
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m88% [Working]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:19 https://deb.debian.org/debian bullseye/main amd64 python3-lockfile all 1:0.12.2-2.2 [17.3 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m88% [19 python3-lockfile 16.5 kB/17.3 k
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m89% [Waiting for headers]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:20 https://deb.debian.org/debian bullseye/main amd64 python3-simplejson amd64 3.17.2-1 [61.7 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m89% [20 python3-simplejson 61.7 kB/61.7
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m90% [Working]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:21 https://deb.debian.org/debian bullseye/main amd64 python3-libcloud all 3.2.0-2 [1615 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m90% [21 python3-libcloud 64.8 kB/1615 k
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m94% [Waiting for headers]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:22 https://deb.debian.org/debian bullseye/main amd64 python3-ntlm-auth all 1.4.0-1 [21.6 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m94% [22 python3-ntlm-auth 21.6 kB/21.6
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m95% [Waiting for headers]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:23 https://deb.debian.org/debian bullseye/main amd64 python3-requests-kerberos all 0.12.0-2 [13.0 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m95% [23 python3-requests-kerberos 13.0
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m96% [Waiting for headers]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:24 https://deb.debian.org/debian bullseye/main amd64 python3-requests-ntlm all 1.1.0-1.1 [6120 B]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m96% [24 python3-requests-ntlm 6120 B/61
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m97% [Waiting for headers]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:25 https://deb.debian.org/debian bullseye/main amd64 python3-requests-toolbelt all 0.9.1-1 [41.7 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m97% [25 python3-requests-toolbelt 41.7
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m97% [Waiting for headers]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:26 https://deb.debian.org/debian bullseye/main amd64 python3-selinux amd64 3.1-3 [160 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m98% [26 python3-selinux 64.9 kB/160 kB
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m98% [Working]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:27 https://deb.debian.org/debian bullseye/main amd64 python3-xmltodict all 0.12.0-2 [15.2 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m99% [27 python3-xmltodict 15.2 kB/15.2
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m99% [Waiting for headers]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mGet:28 https://deb.debian.org/debian bullseye/main amd64 python3-winrm all 0.3.0-2 [21.6 kB]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m99% [28 python3-winrm 21.6 kB/21.6 kB 1
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m100% [Working]
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mFetched 32.9 MB in 0s (122 MB/s)
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-cffi-backend:amd64.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 5%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 10%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 15%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 20%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 25%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 30%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 35%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 40%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 45%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 50%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 55%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 60%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 65%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 70%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 75%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 80%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 85%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 90%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 95%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 100%
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0m(Reading database ... 64212 files and directories currently installed.)
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../00-python3-cffi-backend_1.14.5-1_amd64.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-cffi-backend:amd64 (1.14.5-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance: Still creating... [20s elapsed][0m[0m
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-cryptography.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../01-python3-cryptography_3.3.2-1_amd64.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-cryptography (3.3.2-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-markupsafe.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../02-python3-markupsafe_1.1.1-1+b3_amd64.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-markupsafe (1.1.1-1+b3) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-jinja2.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../03-python3-jinja2_2.11.3-1_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-jinja2 (2.11.3-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-pyparsing.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../04-python3-pyparsing_2.4.7-1_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-pyparsing (2.4.7-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-packaging.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../05-python3-packaging_20.9-2_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-packaging (20.9-2) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package libyaml-0-2:amd64.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../06-libyaml-0-2_0.2.2-1_amd64.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking libyaml-0-2:amd64 (0.2.2-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-yaml.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../07-python3-yaml_5.3.1-5_amd64.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-yaml (5.3.1-5) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-pycryptodome.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../08-python3-pycryptodome_3.9.7+dfsg1-1+b2_amd64.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-pycryptodome (3.9.7+dfsg1-1+b2) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-lib2to3.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../09-python3-lib2to3_3.9.2-1_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-lib2to3 (3.9.2-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-distutils.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../10-python3-distutils_3.9.2-1_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-distutils (3.9.2-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-dnspython.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../11-python3-dnspython_2.0.0-1_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-dnspython (2.0.0-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package ieee-data.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../12-ieee-data_20210605.1_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking ieee-data (20210605.1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-netaddr.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../13-python3-netaddr_0.7.19-5_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-netaddr (0.7.19-5) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package ansible.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../14-ansible_2.10.7+merged+base+2.10.8+dfsg-1_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking ansible (2.10.7+merged+base+2.10.8+dfsg-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-argcomplete.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../15-python3-argcomplete_1.8.1-1.5_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-argcomplete (1.8.1-1.5) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-jmespath.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../16-python3-jmespath_0.10.0-1_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-jmespath (0.10.0-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-kerberos.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../17-python3-kerberos_1.1.14-3.1+b3_amd64.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-kerberos (1.1.14-3.1+b3) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-lockfile.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../18-python3-lockfile_1%3a0.12.2-2.2_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-lockfile (1:0.12.2-2.2) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-simplejson.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../19-python3-simplejson_3.17.2-1_amd64.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-simplejson (3.17.2-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-libcloud.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../20-python3-libcloud_3.2.0-2_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-libcloud (3.2.0-2) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-ntlm-auth.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../21-python3-ntlm-auth_1.4.0-1_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-ntlm-auth (1.4.0-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-requests-kerberos.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../22-python3-requests-kerberos_0.12.0-2_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-requests-kerberos (0.12.0-2) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-requests-ntlm.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../23-python3-requests-ntlm_1.1.0-1.1_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-requests-ntlm (1.1.0-1.1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-requests-toolbelt.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../24-python3-requests-toolbelt_0.9.1-1_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-requests-toolbelt (0.9.1-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-selinux.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../25-python3-selinux_3.1-3_amd64.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-selinux (3.1-3) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-xmltodict.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../26-python3-xmltodict_0.12.0-2_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-xmltodict (0.12.0-2) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSelecting previously unselected package python3-winrm.
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mPreparing to unpack .../27-python3-winrm_0.3.0-2_all.deb ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mUnpacking python3-winrm (0.3.0-2) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-lockfile (1:0.12.2-2.2) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-requests-toolbelt (0.9.1-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up libyaml-0-2:amd64 (0.2.2-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-ntlm-auth (1.4.0-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-pycryptodome (3.9.7+dfsg1-1+b2) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance: Still creating... [30s elapsed][0m[0m
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-kerberos (1.1.14-3.1+b3) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-yaml (5.3.1-5) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-markupsafe (1.1.1-1+b3) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-simplejson (3.17.2-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-xmltodict (0.12.0-2) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-jinja2 (2.11.3-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-pyparsing (2.4.7-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-jmespath (0.10.0-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up ieee-data (20210605.1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-dnspython (2.0.0-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-selinux (3.1-3) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-argcomplete (1.8.1-1.5) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-lib2to3 (3.9.2-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-cffi-backend:amd64 (1.14.5-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-distutils (3.9.2-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-packaging (20.9-2) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-cryptography (3.3.2-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-requests-kerberos (0.12.0-2) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-netaddr (0.7.19-5) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up ansible (2.10.7+merged+base+2.10.8+dfsg-1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance: Still creating... [40s elapsed][0m[0m
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-requests-ntlm (1.1.0-1.1) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-libcloud (3.2.0-2) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mSetting up python3-winrm (0.3.0-2) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mProcessing triggers for man-db (2.9.4-2) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance (remote-exec):[0m [0mProcessing triggers for libc-bin (2.31-13+deb11u8) ...
+[0m[1mmodule.instance-test.google_compute_instance.instance: Creation complete after 43s [id=projects/devsu-project/zones/europe-west1-b/instances/newvm01][0m
+[0m[1m[32m
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+[0m
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] echo
+[INFO] [TerraformApplyStage] Finish Apply
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] End of Pipeline
+Finished: SUCCESS

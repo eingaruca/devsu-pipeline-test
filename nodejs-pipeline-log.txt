@@ -1,0 +1,731 @@
+Started by user devsu
+Running as devsu
+Checking out git https://github.com/eingaruca/demo-devops-nodejs.git into /var/jenkins_home/workspace/devsu-pipelines/devops-stages/nodejs/main@script/d3844aa4303cf3d29ab58ad3efbfbb5d72ce14776c0511aaf5b04cb02b174f75 to read Jenkinsfile
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/eingaruca/demo-devops-nodejs.git
+ > git init /var/jenkins_home/workspace/devsu-pipelines/devops-stages/nodejs/main@script/d3844aa4303cf3d29ab58ad3efbfbb5d72ce14776c0511aaf5b04cb02b174f75 # timeout=10
+Fetching upstream changes from https://github.com/eingaruca/demo-devops-nodejs.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.38.4'
+ > git fetch --tags --force --progress -- https://github.com/eingaruca/demo-devops-nodejs.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/eingaruca/demo-devops-nodejs.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 79fa0069b2749768750f37856e590b4af6a0026d (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 79fa0069b2749768750f37856e590b4af6a0026d # timeout=10
+Commit message: "feat: manifest.yaml"
+First time build. Skipping changelog.
+Loading library devops-pipelines@dev
+Examining eingaruca/devsu-pipeline-test
+Attempting to resolve dev as a branch
+Resolved dev as branch dev at revision 58c30e7f46d50cbc186921de1e480826e09a8395
+The recommended git tool is: NONE
+using credential devsu_pipeline_test_token
+Cloning the remote Git repository
+Cloning with configured refspecs honoured and without tags
+Cloning repository https://github.com/eingaruca/devsu-pipeline-test.git
+ > git init /var/jenkins_home/workspace/devsu-pipelines/devops-stages/nodejs/main@libs/d701aff446170be1dce3a185e89318577e9bd31523aab28881e2d7b2b6ba89ec # timeout=10
+Fetching upstream changes from https://github.com/eingaruca/devsu-pipeline-test.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.38.4'
+using GIT_ASKPASS to set credentials devsu_pipeline_test_token
+ > git fetch --no-tags --force --progress -- https://github.com/eingaruca/devsu-pipeline-test.git +refs/heads/dev:refs/remotes/origin/dev # timeout=10
+ > git config remote.origin.url https://github.com/eingaruca/devsu-pipeline-test.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/dev:refs/remotes/origin/dev # timeout=10
+Avoid second fetch
+Checking out Revision 58c30e7f46d50cbc186921de1e480826e09a8395 (dev)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 58c30e7f46d50cbc186921de1e480826e09a8395 # timeout=10
+Commit message: "docs: Documentación"
+First time build. Skipping changelog.
+[Pipeline] Start of Pipeline
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] echo
+[INFO] [mainPipeline] Starting Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/devsu-pipelines/devops-stages/nodejs/main
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout Stage)
+[Pipeline] echo
+[INFO] [CheckoutStage] Starting checkout
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] echo
+[INFO] [CheckoutStage] Starting CheckoutStrategy scm
+[Pipeline] checkout
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/eingaruca/demo-devops-nodejs.git
+ > git init /var/jenkins_home/workspace/devsu-pipelines/devops-stages/nodejs/main # timeout=10
+Fetching upstream changes from https://github.com/eingaruca/demo-devops-nodejs.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.38.4'
+ > git fetch --tags --force --progress -- https://github.com/eingaruca/demo-devops-nodejs.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/eingaruca/demo-devops-nodejs.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 79fa0069b2749768750f37856e590b4af6a0026d (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 79fa0069b2749768750f37856e590b4af6a0026d # timeout=10
+Commit message: "feat: manifest.yaml"
+[Pipeline] echo
+[INFO] [CheckoutStage] Finish CheckoutStrategy scm
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] echo
+[INFO] [CheckoutStage] BRANCH: */main
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] echo
+[INFO] [CheckoutStage] Finish checkout
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Stage)
+[Pipeline] echo
+[INFO] [BuildStage] Starting BuildStage
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] echo
+[INFO] [BuildStage] Starting NodeJS Strategy
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . node:20-alpine3.18
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container 1e8f4b45e121d6cf18f631a96b5e7aeb268a2b417a429e17c1c4d0af98bd4942
+$ docker run -t -d -u 0:0 -w /var/jenkins_home/workspace/devsu-pipelines/devops-stages/nodejs/main --volumes-from 1e8f4b45e121d6cf18f631a96b5e7aeb268a2b417a429e17c1c4d0af98bd4942 -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** node:20-alpine3.18 cat
+$ docker top 10670487c20a12b96d88f9395e9a7a2e7dccdb9e0e746764e8b6d8c4299f0fcf -eo pid,comm
+[Pipeline] {
+[Pipeline] sh
++ node --version
+v20.12.0
+[Pipeline] sh
++ npm --version
+10.5.0
+[Pipeline] sh
++ npm install
+npm WARN deprecated @npmcli/move-file@1.1.2: This functionality has been moved to @npmcli/fs
+
+added 562 packages, and audited 563 packages in 9s
+
+44 packages are looking for funding
+  run `npm fund` for details
+
+5 vulnerabilities (3 moderate, 1 high, 1 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues, run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+[Pipeline] }
+$ docker stop --time=1 10670487c20a12b96d88f9395e9a7a2e7dccdb9e0e746764e8b6d8c4299f0fcf
+$ docker rm -f --volumes 10670487c20a12b96d88f9395e9a7a2e7dccdb9e0e746764e8b6d8c4299f0fcf
+[Pipeline] // withDockerContainer
+[Pipeline] stash
+Stashed 10 file(s)
+[Pipeline] echo
+[INFO] [BuildStage] Finish NodeJS Strategy
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] echo
+[INFO] [BuildStage] Finish BuildStage
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test Stage)
+[Pipeline] echo
+[INFO] [TestStage] Starting TestStage
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] unstash
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . node:20-alpine3.18
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container 1e8f4b45e121d6cf18f631a96b5e7aeb268a2b417a429e17c1c4d0af98bd4942
+$ docker run -t -d -u 0:0 -w /var/jenkins_home/workspace/devsu-pipelines/devops-stages/nodejs/main --volumes-from 1e8f4b45e121d6cf18f631a96b5e7aeb268a2b417a429e17c1c4d0af98bd4942 -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** node:20-alpine3.18 cat
+$ docker top 2e08b395688cdf11821688616e1af20618d320b427af67bb3d62680e9a53552d -eo pid,comm
+[Pipeline] {
+[Pipeline] sh
++ node --version
+v20.12.0
+[Pipeline] sh
++ npm --version
+10.5.0
+[Pipeline] echo
+[INFO] [TestStage] Starting Nodejs UNIT Test
+[Pipeline] unstash
+[Pipeline] sh
++ npm run test
+
+> demo@1.0.0 test
+> jest
+
+PASS ./index.test.js
+  User
+    ✓ Get users (116 ms)
+    ✓ Get user (14 ms)
+    ✓ Create user (24 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       3 passed, 3 total
+Snapshots:   0 total
+Time:        2.315 s
+Ran all test suites.
+[Pipeline] echo
+[INFO] [TestStage] Finish Nodejs UNIT Test
+[Pipeline] echo
+[WARNING] [TestStage] Starting Nodejs ACCEPTANCE Test
+[Pipeline] echo
+[WARNING] [TestStage]  *** Acceptance Test - EMPTY function, no code ***
+[Pipeline] echo
+[WARNING] [TestStage] Finish Nodejs ACCEPTANCE Test
+[Pipeline] echo
+[WARNING] [TestStage] Starting INTEGRATION test
+[Pipeline] echo
+[WARNING] [TestStage] *** Integration Test - EMPTY function, no code ***
+[Pipeline] echo
+[WARNING] [TestStage] Finish Nodejs INTEGRATION test
+[Pipeline] }
+$ docker stop --time=1 2e08b395688cdf11821688616e1af20618d320b427af67bb3d62680e9a53552d
+$ docker rm -f --volumes 2e08b395688cdf11821688616e1af20618d320b427af67bb3d62680e9a53552d
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] echo
+[INFO] [TestStage] Finish TestStage
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Static Code Analysis Stage)
+[Pipeline] echo
+[INFO] [CodeAnalysisStage] Starting Static Code Analysis
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/devsu-pipelines/devops-stages/nodejs/main
+[Pipeline] {
+[Pipeline] echo
+[INFO] [CodeAnalysisStage] Starting SonarQube Analysis Node.js Strategy
+[Pipeline] tool
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: sonarqube-server-2
+[Pipeline] {
+[Pipeline] sh
++ echo /
+/
+[Pipeline] sh
++ /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner/bin/sonar-scanner '-Dsonar.projectKey=Nodejs-Project' '-Dsonar.sources=.'
+INFO: Scanner configuration file: /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner/conf/sonar-scanner.properties
+INFO: Project root configuration file: NONE
+INFO: SonarScanner 4.8.0.2856
+INFO: Java 11.0.18 Eclipse Adoptium (64-bit)
+INFO: Linux 5.10.0-28-cloud-amd64 amd64
+INFO: User cache: /root/.sonar/cache
+INFO: Analyzing on SonarQube server 9.9.4.87374
+INFO: Default locale: "en_US", source code encoding: "UTF-8" (analysis is platform dependent)
+INFO: Load global settings
+INFO: Load global settings (done) | time=127ms
+INFO: Server id: 147B411E-AY6GFxb4RPn9h83jGi2Q
+INFO: User cache: /root/.sonar/cache
+INFO: Load/download plugins
+INFO: Load plugins index
+INFO: Load plugins index (done) | time=59ms
+INFO: Load/download plugins (done) | time=229ms
+INFO: Process project properties
+INFO: Process project properties (done) | time=11ms
+INFO: Execute project builders
+INFO: Execute project builders (done) | time=1ms
+INFO: Project key: Nodejs-Project
+INFO: Base dir: /var/jenkins_home/workspace/devsu-pipelines/devops-stages/nodejs/main
+INFO: Working dir: /var/jenkins_home/workspace/devsu-pipelines/devops-stages/nodejs/main/.scannerwork
+INFO: Load project settings for component key: 'Nodejs-Project'
+INFO: Load project settings for component key: 'Nodejs-Project' (done) | time=23ms
+INFO: Auto-configuring with CI 'Jenkins'
+INFO: Load quality profiles
+INFO: Load quality profiles (done) | time=94ms
+INFO: Load active rules
+INFO: Load active rules (done) | time=1880ms
+INFO: Load analysis cache
+INFO: Load analysis cache (404) | time=8ms
+INFO: Load project repositories
+INFO: Load project repositories (done) | time=23ms
+INFO: Indexing files...
+INFO: Project configuration:
+INFO: 14 files indexed
+INFO: 9009 files ignored because of scm ignore settings
+INFO: Quality profile for js: Sonar way
+INFO: Quality profile for json: Sonar way
+INFO: Quality profile for yaml: Sonar way
+INFO: ------------- Run sensors on module Nodejs-Project
+INFO: Load metrics repository
+INFO: Load metrics repository (done) | time=28ms
+INFO: Sensor JaCoCo XML Report Importer [jacoco]
+INFO: 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+INFO: No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+INFO: Sensor JaCoCo XML Report Importer [jacoco] (done) | time=3ms
+INFO: Sensor IaC CloudFormation Sensor [iac]
+INFO: 0 source files to be analyzed
+INFO: 0/0 source files have been analyzed
+INFO: Sensor IaC CloudFormation Sensor [iac] (done) | time=164ms
+INFO: Sensor IaC Kubernetes Sensor [iac]
+INFO: 1 source file to be analyzed
+INFO: 1/1 source file has been analyzed
+INFO: Sensor IaC Kubernetes Sensor [iac] (done) | time=153ms
+INFO: Sensor JavaScript analysis [javascript]
+ERROR: Error when running: 'node -v'. Is Node.js available during analysis?
+org.sonarsource.nodejs.NodeCommandException: Error when running: 'node -v'. Is Node.js available during analysis?
+	at org.sonarsource.nodejs.NodeCommand.start(NodeCommand.java:79)
+	at org.sonarsource.nodejs.NodeCommandBuilderImpl.getVersion(NodeCommandBuilderImpl.java:203)
+	at org.sonarsource.nodejs.NodeCommandBuilderImpl.checkNodeCompatibility(NodeCommandBuilderImpl.java:169)
+	at org.sonarsource.nodejs.NodeCommandBuilderImpl.build(NodeCommandBuilderImpl.java:143)
+	at org.sonar.plugins.javascript.eslint.EslintBridgeServerImpl.initNodeCommand(EslintBridgeServerImpl.java:201)
+	at org.sonar.plugins.javascript.eslint.EslintBridgeServerImpl.startServer(EslintBridgeServerImpl.java:142)
+	at org.sonar.plugins.javascript.eslint.EslintBridgeServerImpl.startServerLazily(EslintBridgeServerImpl.java:233)
+	at org.sonar.plugins.javascript.eslint.AbstractEslintSensor.execute(AbstractEslintSensor.java:68)
+	at org.sonar.scanner.sensor.AbstractSensorWrapper.analyse(AbstractSensorWrapper.java:64)
+	at org.sonar.scanner.sensor.ModuleSensorsExecutor.execute(ModuleSensorsExecutor.java:88)
+	at org.sonar.scanner.sensor.ModuleSensorsExecutor.lambda$execute$1(ModuleSensorsExecutor.java:61)
+	at org.sonar.scanner.sensor.ModuleSensorsExecutor.withModuleStrategy(ModuleSensorsExecutor.java:79)
+	at org.sonar.scanner.sensor.ModuleSensorsExecutor.execute(ModuleSensorsExecutor.java:61)
+	at org.sonar.scanner.scan.SpringModuleScanContainer.doAfterStart(SpringModuleScanContainer.java:82)
+	at org.sonar.core.platform.SpringComponentContainer.startComponents(SpringComponentContainer.java:188)
+	at org.sonar.core.platform.SpringComponentContainer.execute(SpringComponentContainer.java:167)
+	at org.sonar.scanner.scan.SpringProjectScanContainer.scan(SpringProjectScanContainer.java:403)
+	at org.sonar.scanner.scan.SpringProjectScanContainer.scanRecursively(SpringProjectScanContainer.java:399)
+	at org.sonar.scanner.scan.SpringProjectScanContainer.doAfterStart(SpringProjectScanContainer.java:368)
+	at org.sonar.core.platform.SpringComponentContainer.startComponents(SpringComponentContainer.java:188)
+	at org.sonar.core.platform.SpringComponentContainer.execute(SpringComponentContainer.java:167)
+	at org.sonar.scanner.bootstrap.SpringGlobalContainer.doAfterStart(SpringGlobalContainer.java:137)
+	at org.sonar.core.platform.SpringComponentContainer.startComponents(SpringComponentContainer.java:188)
+	at org.sonar.core.platform.SpringComponentContainer.execute(SpringComponentContainer.java:167)
+	at org.sonar.batch.bootstrapper.Batch.doExecute(Batch.java:72)
+	at org.sonar.batch.bootstrapper.Batch.execute(Batch.java:66)
+	at org.sonarsource.scanner.api.internal.batch.BatchIsolatedLauncher.execute(BatchIsolatedLauncher.java:46)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at org.sonarsource.scanner.api.internal.IsolatedLauncherProxy.invoke(IsolatedLauncherProxy.java:60)
+	at com.sun.proxy.$Proxy0.execute(Unknown Source)
+	at org.sonarsource.scanner.api.EmbeddedScanner.doExecute(EmbeddedScanner.java:189)
+	at org.sonarsource.scanner.api.EmbeddedScanner.execute(EmbeddedScanner.java:138)
+	at org.sonarsource.scanner.cli.Main.execute(Main.java:126)
+	at org.sonarsource.scanner.cli.Main.execute(Main.java:81)
+	at org.sonarsource.scanner.cli.Main.main(Main.java:62)
+Caused by: java.io.IOException: Cannot run program "node": error=2, No such file or directory
+	at java.base/java.lang.ProcessBuilder.start(Unknown Source)
+	at java.base/java.lang.ProcessBuilder.start(Unknown Source)
+	at org.sonarsource.nodejs.ProcessWrapperImpl.startProcess(ProcessWrapperImpl.java:39)
+	at org.sonarsource.nodejs.NodeCommand.start(NodeCommand.java:77)
+	... 37 common frames omitted
+Caused by: java.io.IOException: error=2, No such file or directory
+	at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+	at java.base/java.lang.ProcessImpl.<init>(Unknown Source)
+	at java.base/java.lang.ProcessImpl.start(Unknown Source)
+	... 41 common frames omitted
+
+INFO: Hit the cache for 0 out of 0
+INFO: Miss the cache for 0 out of 0
+INFO: Sensor JavaScript analysis [javascript] (done) | time=1705ms
+INFO: Sensor TypeScript analysis [javascript]
+INFO: No input files found for analysis
+INFO: Hit the cache for 0 out of 0
+INFO: Miss the cache for 0 out of 0
+INFO: Sensor TypeScript analysis [javascript] (done) | time=1ms
+INFO: Sensor JavaScript inside YAML analysis [javascript]
+INFO: No input files found for analysis
+INFO: Hit the cache for 0 out of 0
+INFO: Miss the cache for 0 out of 0
+INFO: Sensor JavaScript inside YAML analysis [javascript] (done) | time=2ms
+INFO: Sensor CSS Rules [javascript]
+INFO: No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+INFO: Sensor CSS Rules [javascript] (done) | time=1ms
+INFO: Sensor C# Project Type Information [csharp]
+INFO: Sensor C# Project Type Information [csharp] (done) | time=1ms
+INFO: Sensor C# Analysis Log [csharp]
+INFO: Sensor C# Analysis Log [csharp] (done) | time=27ms
+INFO: Sensor C# Properties [csharp]
+INFO: Sensor C# Properties [csharp] (done) | time=0ms
+INFO: Sensor HTML [web]
+INFO: Sensor HTML [web] (done) | time=4ms
+INFO: Sensor TextAndSecretsSensor [text]
+INFO: 11 source files to be analyzed
+INFO: 11/11 source files have been analyzed
+INFO: Sensor TextAndSecretsSensor [text] (done) | time=283ms
+INFO: Sensor VB.NET Project Type Information [vbnet]
+INFO: Sensor VB.NET Project Type Information [vbnet] (done) | time=1ms
+INFO: Sensor VB.NET Analysis Log [vbnet]
+INFO: Sensor VB.NET Analysis Log [vbnet] (done) | time=38ms
+INFO: Sensor VB.NET Properties [vbnet]
+INFO: Sensor VB.NET Properties [vbnet] (done) | time=0ms
+INFO: Sensor IaC Docker Sensor [iac]
+INFO: 1 source file to be analyzed
+INFO: 1/1 source file has been analyzed
+INFO: Sensor IaC Docker Sensor [iac] (done) | time=114ms
+INFO: ------------- Run sensors on project
+INFO: Sensor Analysis Warnings import [csharp]
+INFO: Sensor Analysis Warnings import [csharp] (done) | time=2ms
+INFO: Sensor Zero Coverage Sensor
+INFO: Sensor Zero Coverage Sensor (done) | time=1ms
+INFO: CPD Executor Calculating CPD for 0 files
+INFO: CPD Executor CPD calculation finished (done) | time=0ms
+INFO: Analysis report generated in 107ms, dir size=129.8 kB
+INFO: Analysis report compressed in 28ms, zip size=22.8 kB
+INFO: Analysis report uploaded in 41ms
+INFO: ANALYSIS SUCCESSFUL, you can find the results at: http://sonarqube:9000/dashboard?id=Nodejs-Project
+INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+INFO: More about the report processing at http://sonarqube:9000/api/ce/task?id=AY6ZoOAvVaqYeSU39r8x
+INFO: Analysis total time: 10.610 s
+INFO: ------------------------------------------------------------------------
+INFO: EXECUTION SUCCESS
+INFO: ------------------------------------------------------------------------
+INFO: Total time: 12.627s
+INFO: Final Memory: 17M/60M
+INFO: ------------------------------------------------------------------------
+[Pipeline] sh
++ sleep 10
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] timeout
+Timeout set to expire in 5 min 0 sec
+[Pipeline] {
+[Pipeline] echo
+[INFO] [CodeAnalysisStage] Waiting time
+[Pipeline] waitForQualityGate
+Checking status of SonarQube task 'AY6ZoOAvVaqYeSU39r8x' on server 'sonarqube-server-2'
+SonarQube task 'AY6ZoOAvVaqYeSU39r8x' status is 'SUCCESS'
+SonarQube task 'AY6ZoOAvVaqYeSU39r8x' completed. Quality gate is 'OK'
+[Pipeline] echo
+[INFO] [CodeAnalysisStage] qualityGate: OK
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] echo
+[INFO] [CodeAnalysisStage] Finish SonarQube Analysis Node.js Strategy
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] echo
+[INFO] [CodeAnalysisStage] Finish Static Code Analysis
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Code Coverage Stage)
+[Pipeline] echo
+[INFO] [CodeCoverageStage] Starting Static Code Coverage
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] echo
+[INFO] [CodeCoverageStage] Node.js Strategy
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . node:20-alpine3.18
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container 1e8f4b45e121d6cf18f631a96b5e7aeb268a2b417a429e17c1c4d0af98bd4942
+$ docker run -t -d -u 0:0 -w /var/jenkins_home/workspace/devsu-pipelines/devops-stages/nodejs/main --volumes-from 1e8f4b45e121d6cf18f631a96b5e7aeb268a2b417a429e17c1c4d0af98bd4942 -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** node:20-alpine3.18 cat
+$ docker top 8e784ab39d02f5ccbbdab782bfc49b602f34285eb6f3e357368f4cb00112c746 -eo pid,comm
+[Pipeline] {
+[Pipeline] unstash
+[Pipeline] sh
++ npm install
+
+up to date, audited 563 packages in 2s
+
+44 packages are looking for funding
+  run `npm fund` for details
+
+5 vulnerabilities (3 moderate, 1 high, 1 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues, run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+[Pipeline] sh
++ npx nyc '--reporter=lcov' npm run test
+npm WARN exec The following package was not found and will be installed: nyc@15.1.0
+
+> demo@1.0.0 test
+> jest
+
+PASS ./index.test.js
+  User
+    ✓ Get users (91 ms)
+    ✓ Get user (17 ms)
+    ✓ Create user (17 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       3 passed, 3 total
+Snapshots:   0 total
+Time:        2.633 s
+Ran all test suites.
+[Pipeline] sh
++ npx nyc report '--reporter=html'
+[Pipeline] }
+$ docker stop --time=1 8e784ab39d02f5ccbbdab782bfc49b602f34285eb6f3e357368f4cb00112c746
+$ docker rm -f --volumes 8e784ab39d02f5ccbbdab782bfc49b602f34285eb6f3e357368f4cb00112c746
+[Pipeline] // withDockerContainer
+[Pipeline] echo
+[INFO] [CodeCoverageStage] Finish Node.js Strategy
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] echo
+[INFO] [CodeCoverageStage] Finish Static Code Analysis
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Delivery (Docker) Stage)
+[Pipeline] echo
+[INFO] [DeliveryStage] Starting Delivery Stage
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] echo
+[INFO] [deliverNodejsStrategy] Node.js Strategy
+[Pipeline] sh
++ git log -n 1 '--pretty=format:%H'
+[Pipeline] echo
+Git commit = 79fa006
+[Pipeline] sh
++ docker login -u eingaruca -p dckr_pat_I1tZsF5F4aAq-mq9kZSmp3SaGXA
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[Pipeline] sh
++ docker build -t demonodejs:79fa006 .
+#1 [internal] load build definition from Dockerfile
+#1 sha256:e9e3a3f77d5a6982082d09560f2fd49502f1fb01d3c36f912d78414fa084fc7d
+#1 transferring dockerfile: 172B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:lts-alpine3.19
+#2 sha256:e4c8d3a80b1b3aced106678d5a53ffb0b29fad68e519ee2cc61e1fa19b902480
+#2 ...
+
+#3 [auth] library/node:pull token for registry-1.docker.io
+#3 sha256:5c36183b744042a5fc58f4da1b38fc94351722c5fcef3b21f38512158244ca7d
+#3 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:lts-alpine3.19
+#2 sha256:e4c8d3a80b1b3aced106678d5a53ffb0b29fad68e519ee2cc61e1fa19b902480
+#2 DONE 0.7s
+
+#4 [internal] load .dockerignore
+#4 sha256:0fe82460ab76545fd55271543c101e02573b3aef2e043f88f66c8c2e1c668586
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#10 [1/5] FROM docker.io/library/node:lts-alpine3.19@sha256:ef3f47741e161900ddd07addcaca7e76534a9205e4cd73b2ed091ba339004a75
+#10 sha256:73e2288980229a14752079bc32edc91645888ea13880d8829e74d2473fdc016a
+#10 DONE 0.0s
+
+#8 [internal] load build context
+#8 sha256:4ca01ad66249481395a86d8fbc043db035a008dfb1448399f575bb0e7f43e991
+#8 transferring context: 55.82MB 1.4s done
+#8 DONE 1.5s
+
+#9 [2/5] WORKDIR /usr/src/app
+#9 sha256:2d83ca9a9de3458e94f441ce636057e93d7126a104c713e444a62d388825bf53
+#9 CACHED
+
+#7 [3/5] COPY package*.json ./
+#7 sha256:c833d8a35588cca06c6b57ac64b70cbbf369083b6d0b6a149b373dc92bb4bea5
+#7 CACHED
+
+#6 [4/5] RUN npm install
+#6 sha256:1e8dff925b6e24191fe58f3fd51037516bf0bfcf3c1d1084e3eb019a4bbc5b17
+#6 CACHED
+
+#5 [5/5] COPY . .
+#5 sha256:557e1a947afb660d665b970473813442bad2cd488d4fded179bfb52ec46a0e45
+#5 DONE 2.1s
+
+#11 exporting to image
+#11 sha256:dc57cb9c77ae5bc99f47ca58190ed5ffcaa77745efa880de4057af2d3deefe9d
+#11 exporting layers
+#11 exporting layers 0.8s done
+#11 writing image sha256:0a979ff1ae988886d1858f7306913bd19dd5584f682652fca4796a6a37abfe52 done
+#11 naming to docker.io/library/demonodejs:79fa006 done
+#11 DONE 0.8s
+[Pipeline] sh
++ docker tag demonodejs:79fa006 eingaruca/nodejs:79fa006
+[Pipeline] sh
++ docker push eingaruca/nodejs:79fa006
+The push refers to repository [docker.io/eingaruca/nodejs]
+ed714fb691c2: Preparing
+8d1a8d31dc5f: Preparing
+dea50f2e5508: Preparing
+b424cdb57b8c: Preparing
+413c136dedcf: Preparing
+abc5b1d00820: Preparing
+f82bfb71098a: Preparing
+d4fc045c9e3a: Preparing
+abc5b1d00820: Waiting
+f82bfb71098a: Waiting
+d4fc045c9e3a: Waiting
+dea50f2e5508: Layer already exists
+413c136dedcf: Layer already exists
+b424cdb57b8c: Layer already exists
+8d1a8d31dc5f: Layer already exists
+abc5b1d00820: Layer already exists
+d4fc045c9e3a: Layer already exists
+f82bfb71098a: Layer already exists
+ed714fb691c2: Pushed
+79fa006: digest: sha256:d4ffd72c8f9f0cc572902030135ef1f227522e421892ee5ce52d79e03dea7bb4 size: 1998
+[Pipeline] sh
++ docker rmi demonodejs:79fa006
+Untagged: demonodejs:79fa006
+[Pipeline] sh
++ docker rmi eingaruca/nodejs:79fa006
+Untagged: eingaruca/nodejs:79fa006
+Untagged: eingaruca/nodejs@sha256:d4ffd72c8f9f0cc572902030135ef1f227522e421892ee5ce52d79e03dea7bb4
+Deleted: sha256:0a979ff1ae988886d1858f7306913bd19dd5584f682652fca4796a6a37abfe52
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] echo
+[INFO] [DeliveryStage] Finish Delivery Stage
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy (GKE) Stage)
+[Pipeline] echo
+[INFO] [DeployStage] Starting Deployment Stage
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] echo
+[INFO] [deliverySBStrategy] Springboot Strategy
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . google/cloud-sdk:470.0.0
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container 1e8f4b45e121d6cf18f631a96b5e7aeb268a2b417a429e17c1c4d0af98bd4942
+$ docker run -t -d -u 0:0 -w /var/jenkins_home/workspace/devsu-pipelines/devops-stages/nodejs/main --volumes-from 1e8f4b45e121d6cf18f631a96b5e7aeb268a2b417a429e17c1c4d0af98bd4942 -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** google/cloud-sdk:470.0.0 cat
+$ docker top b6c21a56f4076f9c6ab1f740e949b22d51d485fe02f737ca1cb1882f7d62e8b7 -eo pid,comm
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $GKE_CREDENTIALS_FILE
+[Pipeline] {
+[Pipeline] sh
+Warning: A secret was passed to "sh" using Groovy String interpolation, which is insecure.
+		 Affected argument(s) used the following variable(s): [GKE_CREDENTIALS_FILE]
+		 See https://jenkins.io/redirect/groovy-string-interpolation for details.
++ gcloud auth activate-service-account --key-file=****
+Activated service account credentials for: [admin-sa-devsuproject@devsu-project.iam.gserviceaccount.com]
+[Pipeline] sh
++ gcloud container clusters get-credentials devsu-cluster-test --zone europe-west1-b --project devsu-project
+Fetching cluster endpoint and auth data.
+kubeconfig entry generated for devsu-cluster-test.
+[Pipeline] sh
++ git log -n 1 --pretty=format:%H
+[Pipeline] echo
+Git commit = 79fa006
+[Pipeline] sh
++ sed -i s|TAGVARIABLE|79fa006|g manifest.yaml
+[Pipeline] sh
++ cat manifest.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nodejs-app
+  template:
+    metadata:
+      labels:
+        app: nodejs-app
+    spec:
+      containers:
+      - name: nodejs-app
+        image: eingaruca/nodejs:79fa006
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-app-svc
+spec:
+  selector:
+    app: nodejs-app
+  ports:
+  - protocol: TCP
+    port: 8081
+    targetPort: 3000
+[Pipeline] sh
++ kubectl delete -f ./manifest.yaml --ignore-not-found
+deployment.apps "nodejs-app" deleted
+service "nodejs-app-svc" deleted
+[Pipeline] sh
++ kubectl apply -f ./manifest.yaml
+deployment.apps/nodejs-app created
+service/nodejs-app-svc created
+[Pipeline] sh
++ sleep 5
+[Pipeline] sh
++ kubectl get pods
+NAME                          READY   STATUS              RESTARTS   AGE
+nodejs-app-67cb6b7b5-gxptk    0/1     ContainerCreating   0          6s
+nodejs-app-67cb6b7b5-w26zg    0/1     ContainerCreating   0          6s
+nodejs-app-686c79c6c9-mblkp   1/1     Terminating         0          3h57m
+nodejs-app-686c79c6c9-xz59z   1/1     Terminating         0          3h57m
+python-app-69b4576696-2xdjx   1/1     Running             0          4h43m
+python-app-69b4576696-mrnql   1/1     Running             0          4h43m
+sb-app-8565f68f79-dvm9r       1/1     Running             0          103m
+sb-app-8565f68f79-vxzgf       1/1     Running             0          104m
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+$ docker stop --time=1 b6c21a56f4076f9c6ab1f740e949b22d51d485fe02f737ca1cb1882f7d62e8b7
+$ docker rm -f --volumes b6c21a56f4076f9c6ab1f740e949b22d51d485fe02f737ca1cb1882f7d62e8b7
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] echo
+[INFO] [DeployStage] Finish Deployment Stage
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] End of Pipeline
+Finished: SUCCESS

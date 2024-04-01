@@ -151,7 +151,8 @@ El uso desde un Jenkinsfile es muy sencillo.
 - Ampliar las funcionalidades a diferentes proveedores Cloud.
 
 ## 4. Pipeline Ciclo DevOps Aplicaciones (demo-app-*)
-Para ver las pruebas de ejecución de deste pipeline: Click aquí.
+**IMPORTANTE:**
+Para ver las pruebas de ejecución de deste pipeline: [Click aquí](stage-pipeline.md).
 
 ### 4.1 Introducción
 También, se ha querido dar un enfoque total. Se ha creado una librería escrita en Groovy para Jenkins que sea escalable y adaptable conforme vayan surgiendo las necesidades. Se ha previsto el uso de estrategias en el pipeline para proyectos java (springboot), nodejs y python (Django). El uso de contenedores en algunas etapas (Stages), permite que se dependa muy poco del entorno sobre el que se ejecuta y es el primer paso para llevarlo a orquestadores de microservicios como Kubernetes u Openshift.
