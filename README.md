@@ -17,6 +17,11 @@ El código de la solución se encuentra en:
   - https://github.com/eingaruca/demo-devops-nodejs
   - https://github.com/eingaruca/demo-devops-python
 
+- IPs de los Ingress
+  - Node.js: http://34.111.230.147/api/users
+  - Java: http://34.49.79.109/api/users
+  - Python: http://34.111.152.45/api/users (Errores backend)
+
 ## 1.1 Entorno Cloud (Google Cloud) 
 
 ### 1.1.1 Jenkins, SonarQube y GKE
