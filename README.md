@@ -9,55 +9,53 @@ El proyecto quiere representar una serie de automatismos para desplegar infraest
 
 La presente documentación hará énfasis, primero, en el despliegue y configuración de la infraestructura y luego abarcaremos el ciclo completo de CI/CD.
 
-## 1.1 Importante - Ejecución Local *Jenkins & Sonarqube*
-Esta es una versión de demostración, se ha querido diseñar la solución lo más portable posible, por lo que si desea probar este proyecto, puede utilizar la carpeta **devops-tools** que despliega un contenedor de Jenkins y otro de Sonarqube con las configuraciones necesarias para correr este proyecto localmente.
+El código de la solución se encuentra en:
 
-### 1.1.1 Requisitos:
-  - docker & docker compose
+- Pipelines y aprovisionamiento: https://github.com/eingaruca/devsu-pipeline-test.
+- Proyectos de Devsu, adaptados para que utilicen Dockerfile, manifiestos yaml y cloud-build.yaml:
+  - https://github.com/eingaruca/demo-devops-java
+  - https://github.com/eingaruca/demo-devops-nodejs
+  - https://github.com/eingaruca/demo-devops-python
 
-### 1.1.2 Descripción:
+## 1.1 Entorno Cloud (Google Cloud) 
 
-![alt text](images/devops-tools.png)
-- **docker-compose.yaml**: 
-  - Despliega un contenedor **Sonarqube** con la configuración más básica posible. Sin volúmenes ni Postgre SQL. Para esta etapa de demostración, no hace falta.
-  - Despliega un contenedor **Jenkins** utilizando un Dockerfile personalizado.
-    - **casc/casc.yaml**: Se utiliza Configurations as Code de Jenkins para desplegar el contenedor con las credenciales necesarias, estructura de proyectos y repositorios a utilizar. Altamente portable.
-    - **creds/credentials.txt**: Credenciales básicas para el proyecto se utilizarán en casc.yaml.
-    - **plugins/plugins.txt**: Los plugins necesarios que se instalaran desde el Dockerfile.
+### 1.1.1 Jenkins, SonarQube y GKE
+Se ha aprovisionado una VM Instance en Google Cloud.
+![Alt text](images/vm-instance.png)
+- Jenkins:
+  ```
+  http://34.77.120.197:8080/
 
-### 1.1.3 Uso:
+  Usuario: devsu
+  Password: devsu
+  ```
+- SonarQube:
+  ```
+  http://34.77.120.197:9000/
 
-Si bien, se ha conseguido llevar gran parte de la configuración, existen unas pocas configuraciones extras que hay que hacer una vez desplegados los contenedores.
+  Usuario: admin
+  Password: devsu2024
+  ```
 
-Uso básico:
+También se ha aprovisionado un Clúster de Googke Kubernetes Engine.
+![Alt text](images/gke-instance.png)
 
-Desde la carpeta **devops-tools**:
+### 1.1.2 Google Cloud Build
+Existe una segunda vía de ejecución de un pipeline de Devops. Es un valor agregado a esta guía, para información, haga click [aquí](cloud-build.md).
 
-```
-docker compose up -d
-```
-Una vez arrancados, ejecutar los siguientes comandos
-```
-docker exec -ti jenkins curl -u admin:admin -X POST "http://sonarqube:9000/api/users/change_password?login=admin&previousPassword=admin&password=devsu2024"
-```
-El token generado siguiente comando, tiene que ser utilizada en Jenkins
-```
-curl -u admin:devsu2024 -X POST "http://sonarqube:9000/api/user_tokens/generate?login=admin&name=testToken"
-```
-**[[[[[[[[[[[[[[[ Crear proyectos por comando ]]]]]]]]]]]]]]]**
-Cambio en Jenkins:
-![alt text](images/changeSecret.png)
 
-Finalizado esto, podremos ver nuestro jenkins levantado y ejecutar los pipelines de devops-stages o de infrastructure:
-![alt text](images/devops-stages.png)
-![alt text](images/infrastructure-stages.png)
+## 1.2 Entorno Local *Jenkins & Sonarqube*
+También se han generado los scripts para que puedan ejecutar SonarQube y Jenkins con las configuraciones necesarias en su entorno local. Si desea hacerlo, puede seguir la siguiente guía:
 
-### 1.4 Log de ejecución previa:
-- Logs de la ejecución de este paso: [Log](Log-devops-tools.md)
+[Ejecución Local](devops-tools/README.md)
 
 ## 2. Infraestructura
+
+Recordar que si desean una explicación más detallada de la solución utilizando Cloud Build, haga click [aquí](cloud-build.md). 
+
 ### 2.1 Introducción
-La intención de la infraestructura desplegada es que pueda utilizarse en diferentes entornos. 
+
+A continuación se explicará la solución utilizando una Virtual Machine, Jenkins, SonarQube, GKE, etc.
 
 ### 2.2 Diagrama
 ![Diagrama de Infraestructura](images/ArchitectureDiagram-Infrastructure.webp)
@@ -79,14 +77,17 @@ El despliegue de la solución constó de 2 etapas:
   - Log: Aquí
 
 
-## 3. Pipelines Infraestructura
-### 3.1 Introducción
-Se ha querido dar un enfoque total. Crear una librería escrita en Groovy para Jenkins que sea escalable. Utilizando una estructura similar para diferentes tipos de proyectos, clouds y recursos.
+## 3. Pipelines Infraestructura (Google Cloud & Ansible)
 
-Link: https://github.com/eingaruca/devsu-pipeline-test/tree/main/pipelines/infrastructure/library
+Para ver las pruebas de ejecución de deste pipeline: Click aquí.
+
+### 3.1 Introducción
+Se ha querido dar un enfoque total. Crear una librería escrita en Groovy para Jenkins que sea altamente escalable y adaptable. Utilizando una estructura similar para diferentes tipos de proveedores (Mejora futura ampliara AWS y Azure):
+
+- Cloud: https://github.com/eingaruca/devsu-pipeline-test/tree/main/pipelines/infrastructure/library
 
 Tecnologías utilizadas:
-  - Jenkins pipelines
+  - Jenkins pipelines & Plugins
   - Groovy
   - Terraform
   - Ansible
@@ -94,17 +95,17 @@ Tecnologías utilizadas:
 ### 3.2 Pipeline
 ![alt text](<images/ArchitectureDiagram-Infrastructure Cycle.webp>)
 
-Tal como se puede ver en el gráfico, se ha creado la librería Groovy que tendrá que utilizar cada Jenkinsfile. Esta librería aporta 5 etapas al pipeline.
+Tal como se puede ver en el gráfico, se ha creado una librería en Groovy que tendrá que utilizar cada Jenkinsfile. Esta librería aporta estas etapas al pipeline.
 - **Checkout Stage**: Obligatorio y necesario para el workspace.
 - **Terraform Init Stage**: Etapa común a cualquier inicialización de un proyecto Terraform.
 - **Terraform Plan Stage**: Terraform plan. Recibirá diferentes parámetros del Jenkinsfile que lo llevarán a las diferentes estrategias:
   - **GCP Strategy**: Recibirá el tipo de recurso, proyecto, nombre de recurso y se ampliará en el futuro a ciertos parámetros más personalizables.
-  - **Azure Strategy**: No implementado, mejora futura.
-  - **AWS Strategy**: No implementado, mejora futura.
+  - **Azure Strategy**: *No implementado, mejora futura.*
+  - **AWS Strategy**: *No implementado, mejora futura.*
 - **Terraform Apply Stage**: Terraform apply. Igual que la etapa anterior, recibirá parámetros que condicionarán su comportamiento o estrategia.
   - **GCP Strategy**: Recibirá el tipo de recurso, proyecto, nombre de recurso y se ampliará en el futuro a ciertos parámetros más personalizables.
-  - **Azure Strategy**: No implementado, mejora futura.
-  - **AWS Strategy**: No implementado, mejora futura.
+  - **Azure Strategy**: *No implementado, mejora futura.*
+  - **AWS Strategy**: *No implementado, mejora futura.*
 - **Post Stage**: Limpieza del workspace
 
 ### 3.3 Estructura de clases:
@@ -144,14 +145,20 @@ El uso desde un Jenkinsfile es muy sencillo.
   ```
   Los demás parámetros necesarios los completan los scripts de terraform que utilizan los módulos. 
 
-## 4. Pipeline Ciclo DevOps (demo-app-*)
+### 3.5 Mejoras futuras
+- Estandarizar los valores por defecto de los módulos.
+- Subir el tfstate a un Bucket.
+- Ampliar las funcionalidades a diferentes proveedores Cloud.
+
+## 4. Pipeline Ciclo DevOps Aplicaciones (demo-app-*)
+Para ver las pruebas de ejecución de deste pipeline: Click aquí.
 
 ### 4.1 Introducción
-También, se ha querido dar un enfoque total. Se ha creado una librería escrita en Groovy para Jenkins que sea escalable. Se ha adaptado las estrategias del pipeline para proyectos java (springboot), nodejs y python (Django). El uso de contenedores, permite que se dependa muy poco del entorno sobre el que se ejecuta y es el primer paso para llevarlo a orquestadores de microservicios como Kubernetes u Openshift.
+También, se ha querido dar un enfoque total. Se ha creado una librería escrita en Groovy para Jenkins que sea escalable y adaptable conforme vayan surgiendo las necesidades. Se ha previsto el uso de estrategias en el pipeline para proyectos java (springboot), nodejs y python (Django). El uso de contenedores en algunas etapas (Stages), permite que se dependa muy poco del entorno sobre el que se ejecuta y es el primer paso para llevarlo a orquestadores de microservicios como Kubernetes u Openshift.
 
-Se ha "modularizado" las diferentes etapas, por lo que si un Stage, un Strategy o alguna función interna de cada una de estas necesita reforzarce o ampliarse, puede hacerse limpiamente sin afectar a el script principal, incluso permitiendo que se pueda trabajar en paralelo en diferentes Stages.
+Se ha "modularizado" las diferentes etapas, por lo que si un Stage, un Strategy o alguna función interna de cada una de estas necesita reforzarce o ampliarse, puede hacerse limpiamente sin afectar el script principal, incluso permitiendo que se pueda trabajar en paralelo en diferentes Stages.
 
-Si bien, aprender el uso inicial del Jenkinsfile puede implicar un poco de esfuerzo, se convierte en una herramienta potente sencilla y adaptable a diferentes proyectos.
+Si bien, aprender el uso inicial del Jenkinsfile puede implicar un ligero esfuerzo inicial, se convierte en una herramienta potente, sencilla y adaptable a diferentes proyectos.
 
 ### 4.2 Pipeline
 
@@ -164,11 +171,11 @@ El pipeline se ha parametrizado para ejecutarse en base a 2 factores:
 En cuanto a los Stages o etapas, esta es una breve descripción de cada una:
 
 - **Checkout Stage**: Obligatorio y común a todo tipo de proyecto, no hace falta parametrizarlo.
-- **Build Stage**: Obligatorio. Dependiendo del tipo de proyecto realiza un build de manera diferente. Realiza el build en contenedor docker para no utilizar configuración del servidor (Contenedor) de Jenkins.
-- **Test Stage**: Opcional. *ArrayList*. Si no se espefica, no se ejecuta. Pero si se espefica, hay que indicarle que tipo de pruebas necesitamos. Se hacen las pruebas sobre contenedores (Se crean y destruyen) docker para no depender de la configuración de Jenkins. Hay tres tipos de pruebas:
-  - **Unitarias**: *Boolean*. Si no existe para el tipo de Proyecto, lo imprime en el output del pipeline.
-  - **Aceptación**: *Boolean*. Si no existe para el tipo de Proyecto, lo imprime en el output del pipeline.
-  - **Integración**: *Boolean*. Si no existe para el tipo de Proyecto, lo imprime en el output del pipeline.
+- **Build Stage**: Obligatorio. Dependiendo del tipo de proyecto realiza un build de manera diferente. Realiza el build en un contenedor docker, que se crea y destruye, para no utilizar configuración del servidor (Contenedor) de Jenkins.
+- **Test Stage**: Opcional. *ArrayList*. Si no se espefica, no se ejecuta. Pero si se espefica, hay que indicarle que tipo de pruebas necesitamos. Se hacen las pruebas sobre contenedores docker (Se crean y destruyen) para no depender de la configuración de Jenkins. Hay tres tipos de pruebas:
+  - **Unitarias**: *Boolean*. Realiza la prueba. Si no existe para el tipo de Proyecto, lo indica en el output del pipeline.
+  - **Aceptación**: *Boolean*. Realiza la prueba. Si no existe para el tipo de Proyecto, lo indica en el output del pipeline.
+  - **Integración**: *Boolean*. Realiza la prueba. Si no existe para el tipo de Proyecto, lo indica en el output del pipeline.
 - **Code Analysis Stage**: *Boolean*. Si es true, utiliza el tipo de proyecto para realizar el análisis de código estático buscando el proyecto específico en el contenedor de Sonarqube previamente desplegado simulando un servidor de Sonarqube.
 - **Code Coverage Stage**: *Boolean*. Si es true, utiliza el tipo de proyecto para realizar el análisis de código estático buscando el proyecto específico en el contenedor de Sonarqube previamente desplegado simulando un servidor de Sonarqube.
 - **Delivery Stage**: *Boolean*. Si es true, realiza el build y push del Dockerfile de cada proyecto , dependiendo del Tipo de Proyecto, sobre el repositorio de DockerHub.
@@ -215,3 +222,7 @@ El uso desde un Jenkinsfile es muy sencillo.
   ```
   
   - La ventaja del esta estructura es que es fácil de escalar, se liberan las clases de lógica y funcionalidad permitiendo crecer ordenadamente.
+
+### 4.5 Mejoras futuras
+- Adaptar el deploy para poder desplegar en diferentes infraestructuras, como por ejemplo, Openshift, Clústers locales, Docker compose, diferentes proveedores de Cloud.
+- Gestionar una estrategia de Ramas.

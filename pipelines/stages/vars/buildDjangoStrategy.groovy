@@ -9,6 +9,7 @@ def call() {
         // Execute commands inside Docker container
         python.inside {
             sh "pip install -r requirements.txt"
+            sh "python manage.py makemigrations"
             sh "python manage.py migrate"
 
             // sh "python manage.py collectstatic --no-input"
