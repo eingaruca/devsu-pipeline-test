@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sb-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sb-app
+  template:
+    metadata:
+      labels:
+        app: sb-app
+    spec:
+      containers:
+      - name: sb-app
+        image: eingaruca/springboot:TAGVARIABLE
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+        livenessProbe:
+          failureThreshold: 15
+          httpGet:
+            path: /api/users
+            port: 8000
+            scheme: HTTP
+          initialDelaySeconds: 50
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 10
+        readinessProbe:
+          failureThreshold: 15
+          httpGet:
+            path: /api/users
+            port: 8000
+            scheme: HTTP
+          initialDelaySeconds: 50
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 10
+
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: sb-app-svc
+# spec:
+#   selector:
+#     app: sb-app
+#   ports:
+#   - protocol: TCP
+#     port: 8080
+#     targetPort: 8000
+#   type: NodePort
