@@ -36,9 +36,9 @@ docker exec -ti jenkins curl -u admin:admin -X POST "http://sonarqube:9000/api/u
 
 docker exec -ti jenkins curl -u admin:devsu2024 -X POST "http:/sonarqube:9000/api/projects/create?name=Java-Project&project=Java-Project&mainBranch=main"
 
-docker exec -ti jenkins curl -u admin:devsu2024 -X POST "http://sonarqube:9000/api/projects/create?name=Java-Project&project=Python-Project&mainBranch=main"
+docker exec -ti jenkins curl -u admin:devsu2024 -X POST "http://sonarqube:9000/api/projects/create?name=Python-Project&project=Python-Project&mainBranch=main"
 
-docker exec -ti jenkins curl -u admin:devsu2024 -X POST "http://sonarqube:9000/api/projects/create?name=Java-Project&project=Nodejs-Project&mainBranch=main"
+docker exec -ti jenkins curl -u admin:devsu2024 -X POST "http://sonarqube:9000/api/projects/create?name=Nodejs-Project&project=Nodejs-Project&mainBranch=main"
 ```
 ### 3.3 Configuración Jenkins
 El token generado siguiente comando, tiene que ser utilizado en Jenkins
@@ -76,9 +76,11 @@ Los contenedores ejecutados en local son:
     ```
 ## 5. Pruebas ejecución
 ### 5.1 Ejecución docker-compose.yaml
-![Alt text](image.png)
+![Alt text](/images/docker-build-1.png)
 
-![Alt text](image-2.png)
+![Alt text](/images/docker-build-2.png)
+
+![alt text](/images/docker-ps.png)
 ### 5.2 Ejemplo ejecución Pipeline:
 Logs de la ejecución de este paso: [Log](Log-devops-tools.md)
 

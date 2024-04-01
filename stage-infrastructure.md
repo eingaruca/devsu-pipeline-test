@@ -16,3 +16,17 @@ En el output del pipeline se puede apreciar que ha desplegado sobre Google Cloud
 
 Para ver el log de esta ejecución:
 [LOG](cloud-pipeline-log.txt)
+
+## 3. Configuración
+
+Todavía no está incluido en el automatismo, pero se prevee la mejora en esta sección del aprovisionamiento de instancias:
+
+![alt text](images/terraform-ansible.png)
+
+Ya está listo el primer playbook para configurar la instalación de los paquetes básicos:
+![alt text](images/ansible-playbook.png)
+
+Ejecución:
+![alt text](images/ansible-execution.png)
+![alt text](images/ansible-exec2.png)
+

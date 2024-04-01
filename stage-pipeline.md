@@ -43,21 +43,21 @@ En el output del pipeline también se puede apreciar que estamos desplegando sob
 ![Alt text](images/java-pods-log.png)
 
 Para ver el log de esta ejecución:
-[LOG](nodejs-pipeline-log.txt).
+[LOG](java-pipeline-log.txt)
 
 
 ### 2.3 Python
 La ejecución del pipeline en Jenkins se ve de la siguiente manera:
 
-![Alt text](images/nodejs-exec.png)
+![alt text](images/python-exec.png)
 
 Tal como se indicó en el diagrama de los Stages del Pipeline. Determinados pasos ejecutan y destruyen contenedores docker y otros realizan el análisis de SonarQube. El paso final es el despliegue en Kubernetes, en el clúster de GKE:
 
-![Alt text](images/nodejs-pods.png)
+![alt text](images/python-pods.png)
 
 En el output del pipeline también se puede apreciar que estamos desplegando sobre kubernetes:
 
-![Alt text](images/nodejs-getpods.png)
+![alt text](images/python-pods-log.png)
 
 Para ver el log de esta ejecución:
-[LOG](nodejs-pipeline-log.txt).
+[LOG](python-pipeline-log.txt)

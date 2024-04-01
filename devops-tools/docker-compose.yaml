@@ -17,6 +17,8 @@ services:
       context: ./jenkins
       dockerfile: Dockerfile
     restart: always
+    env_file:
+      - jenkins/creds/credentials.txt
     ports:
       - 8080:8080
       - 50000:50000

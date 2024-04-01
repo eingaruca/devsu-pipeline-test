@@ -233,7 +233,6 @@ unclassified:
                 traits: 
                  - gitBranchDiscovery
                 repositoryUrl: "https://github.com/eingaruca/devsu-pipeline-test.git"
-                credentialsId: 'devsu_pipeline_test_token'
   sonarGlobalConfiguration:
     buildWrapperEnabled: True
     installations:

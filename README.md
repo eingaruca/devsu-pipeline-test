@@ -72,14 +72,12 @@ Para la solución se ha utilizado:
 ### 2.3 Despliegue 
 
 El despliegue de la solución constó de 2 etapas:
+- El aprovisionamiento de Jenkins y SonarQube se realizó con docker compose: https://github.com/eingaruca/devsu-pipeline-test/tree/main/devops-tools
 - Aprovisionamiento el Google Cloud de la instancia y GKE Clúster utilizando scripts los módulos de terraform.
-  - Ruta: **[[[[[[[[[[[[[[[ Indicar ruta de los scripts Terraform]]]]]]]]]]]]]]]**
-  - Log: Aquí
-
 
 ## 3. Pipelines Infraestructura (Google Cloud & Ansible)
 
-Para ver las pruebas de ejecución de deste pipeline: Click aquí.
+Para ver las pruebas de ejecución de deste pipeline: [Click aquí](stage-infrastructure.md).
 
 ### 3.1 Introducción
 Se ha querido dar un enfoque total. Crear una librería escrita en Groovy para Jenkins que sea altamente escalable y adaptable. Utilizando una estructura similar para diferentes tipos de proveedores (Mejora futura ampliara AWS y Azure):
@@ -106,7 +104,7 @@ Tal como se puede ver en el gráfico, se ha creado una librería en Groovy que t
   - **GCP Strategy**: Recibirá el tipo de recurso, proyecto, nombre de recurso y se ampliará en el futuro a ciertos parámetros más personalizables.
   - **Azure Strategy**: *No implementado, mejora futura.*
   - **AWS Strategy**: *No implementado, mejora futura.*
-- **Post Stage**: Limpieza del workspace
+- **Post Stage**: Buenas prácticas. Proximamente.
 
 ### 3.3 Estructura de clases:
 
@@ -120,7 +118,7 @@ Tal como se puede ver en el gráfico, se ha creado una librería en Groovy que t
   - **credentials**: Las credenciales para los clouds
   - **modules**: Se ha creado módulos personalizados para el despliegue de recursos.
   - **resources**: Utiliza los módulos creados antes, indica variables por defecto para que si el usario sólo indica el nombre del recurso, el pipeline se encargue de crear dicho recurso con valores por defecto.
-    - **ansible**: Adicionalmente, en la carpeta de instancias, se han creado playbooks de ansible que instalan y configuran los recusos necesarios para la configuración de la instancia **[[[[[[[[[[[[[ REVISAR ]]]]]]]]]]]]]**.
+    - **ansible**: Se han preparado un Playbook para la instalación de paquetes.
 
 ### 3.4 Uso Básico
 Jenkinsfile:
@@ -149,8 +147,10 @@ El uso desde un Jenkinsfile es muy sencillo.
 - Estandarizar los valores por defecto de los módulos.
 - Subir el tfstate a un Bucket.
 - Ampliar las funcionalidades a diferentes proveedores Cloud.
+- Integrar Ansible al desplegar instancias.
 
 ## 4. Pipeline Ciclo DevOps Aplicaciones (demo-app-*)
+
 **IMPORTANTE:**
 Para ver las pruebas de ejecución de deste pipeline: [Click aquí](stage-pipeline.md).
 
@@ -183,9 +183,18 @@ En cuanto a los Stages o etapas, esta es una breve descripción de cada una:
 - **Deployment Stage**: *Boolean*. Si es true, utiliza una imagen oficial de GCP para crear un contenedor, se realiza de esta forma por seguridad. Así evitamos cualquier configuración en el servidor (Contenedor) de Jenkins:
   - Hace login al clúster de GKE. 
   - Borra recursos utilizando el manifiesto en el proyecto.
-  - Aplica el manifiesto.
+  - Aplica el manifiesto ubicado en cada proyecto. Se asegura la integridad del pod para que el Ingress pueda ofrecer disponibilidad.
+    - Deployment: 
+      - Replicas: 2
+      - LivenessProbe
+      - readinessProbe
+    - Service:
+      - Type: NodePort
+    - Ingress: Un Ingress por cada Service (python, java y nodejs)
+      - PathType: Prefix
+      - gce: Genera un Load Balancer en GC con objetos tipos Backend.
   - Realiza una comprobación (kubectl get pods) para comprobar que los pods estén ejecutándose.
-- **Post Stage**: Limpieza del workspace. **[[[[[[[Proximamente]]]]]]]**
+- **Post Stage**: Buenas prácticas. [Proximamente].
 
 ### 4.3 Estructura de clases
 ![alt text](images/devops-Classes.png)
@@ -224,6 +233,9 @@ El uso desde un Jenkinsfile es muy sencillo.
   
   - La ventaja del esta estructura es que es fácil de escalar, se liberan las clases de lógica y funcionalidad permitiendo crecer ordenadamente.
 
+  Ejemplo de pruebas:
+
+  ![alt text](images/sonarqube-testing.png)
 ### 4.5 Mejoras futuras
 - Adaptar el deploy para poder desplegar en diferentes infraestructuras, como por ejemplo, Openshift, Clústers locales, Docker compose, diferentes proveedores de Cloud.
 - Gestionar una estrategia de Ramas.

@@ -1,0 +1,837 @@
+Started by user devsu
+Running as devsu
+Checking out git https://github.com/eingaruca/demo-devops-python.git into /var/jenkins_home/workspace/devsu-pipelines/devops-stages/python/main@script/b242be8c98482a002b84dc730d152649c5c8dba6463b30e0e23d9dc2b2be2f47 to read Jenkinsfile
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/devsu-pipelines/devops-stages/python/main@script/b242be8c98482a002b84dc730d152649c5c8dba6463b30e0e23d9dc2b2be2f47/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/eingaruca/demo-devops-python.git # timeout=10
+Fetching upstream changes from https://github.com/eingaruca/demo-devops-python.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.38.4'
+ > git fetch --tags --force --progress -- https://github.com/eingaruca/demo-devops-python.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 4d71a0383e666392fd7ca06a75a6f7e4ed8e672f (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 4d71a0383e666392fd7ca06a75a6f7e4ed8e672f # timeout=10
+Commit message: "feat: Modifying Dockerfile & manifest.yaml"
+ > git rev-list --no-walk bafab0c5097ab802547bfffdf3aa4a16f31701de # timeout=10
+Loading library devops-pipelines@dev
+Examining eingaruca/devsu-pipeline-test
+Attempting to resolve dev as a branch
+Resolved dev as branch dev at revision 4a5a6f0fdbb956576a7e3181b38489896259ac74
+The recommended git tool is: NONE
+using credential devsu_pipeline_test_token
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/devsu-pipelines/devops-stages/python/main@libs/d701aff446170be1dce3a185e89318577e9bd31523aab28881e2d7b2b6ba89ec/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/eingaruca/devsu-pipeline-test.git # timeout=10
+Fetching without tags
+Fetching upstream changes from https://github.com/eingaruca/devsu-pipeline-test.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.38.4'
+using GIT_ASKPASS to set credentials devsu_pipeline_test_token
+ > git fetch --no-tags --force --progress -- https://github.com/eingaruca/devsu-pipeline-test.git +refs/heads/dev:refs/remotes/origin/dev # timeout=10
+Checking out Revision 4a5a6f0fdbb956576a7e3181b38489896259ac74 (dev)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 4a5a6f0fdbb956576a7e3181b38489896259ac74 # timeout=10
+Commit message: "doc: Documentation"
+ > git rev-list --no-walk 4a5a6f0fdbb956576a7e3181b38489896259ac74 # timeout=10
+[Pipeline] Start of Pipeline
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] echo
+[INFO] [mainPipeline] Starting Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/devsu-pipelines/devops-stages/python/main
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout Stage)
+[Pipeline] echo
+[INFO] [CheckoutStage] Starting checkout
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] echo
+[INFO] [CheckoutStage] Starting CheckoutStrategy scm
+[Pipeline] checkout
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/devsu-pipelines/devops-stages/python/main/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/eingaruca/demo-devops-python.git # timeout=10
+Fetching upstream changes from https://github.com/eingaruca/demo-devops-python.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.38.4'
+ > git fetch --tags --force --progress -- https://github.com/eingaruca/demo-devops-python.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 4d71a0383e666392fd7ca06a75a6f7e4ed8e672f (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 4d71a0383e666392fd7ca06a75a6f7e4ed8e672f # timeout=10
+Commit message: "feat: Modifying Dockerfile & manifest.yaml"
+[Pipeline] echo
+[INFO] [CheckoutStage] Finish CheckoutStrategy scm
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] echo
+[INFO] [CheckoutStage] BRANCH: */main
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] echo
+[INFO] [CheckoutStage] Finish checkout
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Stage)
+[Pipeline] echo
+[INFO] [BuildStage] Starting BuildStage
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] echo
+[INFO] [BuildStage] Starting Django Strategy
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . python:alpine3.19
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container 1e8f4b45e121d6cf18f631a96b5e7aeb268a2b417a429e17c1c4d0af98bd4942
+$ docker run -t -d -u 0:0 -w /var/jenkins_home/workspace/devsu-pipelines/devops-stages/python/main --volumes-from 1e8f4b45e121d6cf18f631a96b5e7aeb268a2b417a429e17c1c4d0af98bd4942 -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** python:alpine3.19 cat
+$ docker top 0bbec9e470770d345a63cadceef3ef8422d16674194cbd7091843302459c9bb8 -eo pid,comm
+[Pipeline] {
+[Pipeline] sh
++ pip install -r requirements.txt
+Collecting django==4.2 (from -r requirements.txt (line 1))
+  Downloading Django-4.2-py3-none-any.whl.metadata (4.1 kB)
+Collecting django-environ==0.10.0 (from -r requirements.txt (line 2))
+  Downloading django_environ-0.10.0-py2.py3-none-any.whl.metadata (13 kB)
+Collecting djangorestframework==3.14.0 (from -r requirements.txt (line 3))
+  Downloading djangorestframework-3.14.0-py3-none-any.whl.metadata (10 kB)
+Collecting asgiref<4,>=3.6.0 (from django==4.2->-r requirements.txt (line 1))
+  Downloading asgiref-3.8.1-py3-none-any.whl.metadata (9.3 kB)
+Collecting sqlparse>=0.3.1 (from django==4.2->-r requirements.txt (line 1))
+  Downloading sqlparse-0.4.4-py3-none-any.whl.metadata (4.0 kB)
+Collecting pytz (from djangorestframework==3.14.0->-r requirements.txt (line 3))
+  Downloading pytz-2024.1-py2.py3-none-any.whl.metadata (22 kB)
+Downloading Django-4.2-py3-none-any.whl (8.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.0/8.0 MB 104.9 MB/s eta 0:00:00
+Downloading django_environ-0.10.0-py2.py3-none-any.whl (19 kB)
+Downloading djangorestframework-3.14.0-py3-none-any.whl (1.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 89.8 MB/s eta 0:00:00
+Downloading asgiref-3.8.1-py3-none-any.whl (23 kB)
+Downloading sqlparse-0.4.4-py3-none-any.whl (41 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 41.2/41.2 kB 5.2 MB/s eta 0:00:00
+Downloading pytz-2024.1-py2.py3-none-any.whl (505 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 505.5/505.5 kB 55.8 MB/s eta 0:00:00
+Installing collected packages: pytz, sqlparse, django-environ, asgiref, django, djangorestframework
+Successfully installed asgiref-3.8.1 django-4.2 django-environ-0.10.0 djangorestframework-3.14.0 pytz-2024.1 sqlparse-0.4.4
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[Pipeline] sh
++ python manage.py makemigrations
+No changes detected
+[Pipeline] sh
++ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, api, auth, contenttypes, sessions
+Running migrations:
+  No migrations to apply.
+[Pipeline] }
+$ docker stop --time=1 0bbec9e470770d345a63cadceef3ef8422d16674194cbd7091843302459c9bb8
+$ docker rm -f --volumes 0bbec9e470770d345a63cadceef3ef8422d16674194cbd7091843302459c9bb8
+[Pipeline] // withDockerContainer
+[Pipeline] stash
+Stashed 9 file(s)
+[Pipeline] echo
+[INFO] [BuildStage] Finish Django Strategy
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] echo
+[INFO] [BuildStage] Finish BuildStage
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test Stage)
+[Pipeline] echo
+[INFO] [TestStage] Starting TestStage
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] unstash
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . python:alpine3.19
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container 1e8f4b45e121d6cf18f631a96b5e7aeb268a2b417a429e17c1c4d0af98bd4942
+$ docker run -t -d -u 0:0 -w /var/jenkins_home/workspace/devsu-pipelines/devops-stages/python/main --volumes-from 1e8f4b45e121d6cf18f631a96b5e7aeb268a2b417a429e17c1c4d0af98bd4942 -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** python:alpine3.19 cat
+$ docker top 7c7b4cc293fd7fd70fb8432d0cdc8189d343b7ecfbe2229b69420810b1ac0306 -eo pid,comm
+[Pipeline] {
+[Pipeline] sh
++ python --version
+Python 3.12.2
+[Pipeline] sh
++ pip install -r requirements.txt
+Collecting django==4.2 (from -r requirements.txt (line 1))
+  Downloading Django-4.2-py3-none-any.whl.metadata (4.1 kB)
+Collecting django-environ==0.10.0 (from -r requirements.txt (line 2))
+  Downloading django_environ-0.10.0-py2.py3-none-any.whl.metadata (13 kB)
+Collecting djangorestframework==3.14.0 (from -r requirements.txt (line 3))
+  Downloading djangorestframework-3.14.0-py3-none-any.whl.metadata (10 kB)
+Collecting asgiref<4,>=3.6.0 (from django==4.2->-r requirements.txt (line 1))
+  Downloading asgiref-3.8.1-py3-none-any.whl.metadata (9.3 kB)
+Collecting sqlparse>=0.3.1 (from django==4.2->-r requirements.txt (line 1))
+  Downloading sqlparse-0.4.4-py3-none-any.whl.metadata (4.0 kB)
+Collecting pytz (from djangorestframework==3.14.0->-r requirements.txt (line 3))
+  Downloading pytz-2024.1-py2.py3-none-any.whl.metadata (22 kB)
+Downloading Django-4.2-py3-none-any.whl (8.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.0/8.0 MB 105.9 MB/s eta 0:00:00
+Downloading django_environ-0.10.0-py2.py3-none-any.whl (19 kB)
+Downloading djangorestframework-3.14.0-py3-none-any.whl (1.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 84.0 MB/s eta 0:00:00
+Downloading asgiref-3.8.1-py3-none-any.whl (23 kB)
+Downloading sqlparse-0.4.4-py3-none-any.whl (41 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 41.2/41.2 kB 7.0 MB/s eta 0:00:00
+Downloading pytz-2024.1-py2.py3-none-any.whl (505 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 505.5/505.5 kB 67.2 MB/s eta 0:00:00
+Installing collected packages: pytz, sqlparse, django-environ, asgiref, django, djangorestframework
+Successfully installed asgiref-3.8.1 django-4.2 django-environ-0.10.0 djangorestframework-3.14.0 pytz-2024.1 sqlparse-0.4.4
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[Pipeline] echo
+[INFO] [TestStage] Starting Django Unit Test
+[Pipeline] unstash
+[Pipeline] sh
++ echo /
+/
+[Pipeline] sh
++ echo whoami
+whoami
+[Pipeline] echo
+ls -l
+[Pipeline] sh
++ python manage.py test -v 2
+Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+Found 3 test(s).
+Operations to perform:
+  Synchronize unmigrated apps: messages, rest_framework, staticfiles
+  Apply all migrations: admin, api, auth, contenttypes, sessions
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying api.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+System check identified no issues (0 silenced).
+test_get (api.tests.TestUserView.test_get) ... ok
+test_get_list (api.tests.TestUserView.test_get_list) ... ok
+test_post (api.tests.TestUserView.test_post) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.012s
+
+OK
+Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+[Pipeline] echo
+[INFO] [TestStage] Finish Django Unit Test
+[Pipeline] echo
+[INFO] [TestStage] Starting Django Acceptance Test
+[Pipeline] echo
+[WARNING] [TestStage]  *** Acceptance Test - EMPTY function, no code ***
+[Pipeline] echo
+[INFO] [TestStage] Finish Django Acceptance Test
+[Pipeline] echo
+[INFO] [TestStage] Starting Django Integration Test
+[Pipeline] unstash
+[Pipeline] sh
++ python manage.py test --tag integration -v 2
+Including test tag(s): integration.
+Found 0 test(s).
+Skipping setup of unused database(s): default.
+System check identified no issues (0 silenced).
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.000s
+
+NO TESTS RAN
+[Pipeline] echo
+[INFO] [TestStage] Finish Django Integration Test
+[Pipeline] }
+$ docker stop --time=1 7c7b4cc293fd7fd70fb8432d0cdc8189d343b7ecfbe2229b69420810b1ac0306
+$ docker rm -f --volumes 7c7b4cc293fd7fd70fb8432d0cdc8189d343b7ecfbe2229b69420810b1ac0306
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] echo
+[INFO] [TestStage] Finish TestStage
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Static Code Analysis Stage)
+[Pipeline] echo
+[INFO] [CodeAnalysisStage] Starting Static Code Analysis
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/devsu-pipelines/devops-stages/python/main
+[Pipeline] {
+[Pipeline] echo
+[INFO] [CodeAnalysisStage] Starting SonarQube Analysis Django Strategy
+[Pipeline] tool
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: sonarqube-server-2
+[Pipeline] {
+[Pipeline] sh
++ echo /
+/
+[Pipeline] sh
++ echo SCANNER /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner
+SCANNER /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner
+[Pipeline] sh
++ /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner/bin/sonar-scanner '-Dsonar.projectKey=Django-Project' '-Dsonar.sources=.'
+INFO: Scanner configuration file: /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner/conf/sonar-scanner.properties
+INFO: Project root configuration file: NONE
+INFO: SonarScanner 4.8.0.2856
+INFO: Java 11.0.18 Eclipse Adoptium (64-bit)
+INFO: Linux 5.10.0-28-cloud-amd64 amd64
+INFO: User cache: /root/.sonar/cache
+INFO: Analyzing on SonarQube server 9.9.4.87374
+INFO: Default locale: "en_US", source code encoding: "UTF-8" (analysis is platform dependent)
+INFO: Load global settings
+INFO: Load global settings (done) | time=102ms
+INFO: Server id: 147B411E-AY6GFxb4RPn9h83jGi2Q
+INFO: User cache: /root/.sonar/cache
+INFO: Load/download plugins
+INFO: Load plugins index
+INFO: Load plugins index (done) | time=45ms
+INFO: Load/download plugins (done) | time=158ms
+INFO: Process project properties
+INFO: Process project properties (done) | time=10ms
+INFO: Execute project builders
+INFO: Execute project builders (done) | time=2ms
+INFO: Project key: Django-Project
+INFO: Base dir: /var/jenkins_home/workspace/devsu-pipelines/devops-stages/python/main
+INFO: Working dir: /var/jenkins_home/workspace/devsu-pipelines/devops-stages/python/main/.scannerwork
+INFO: Load project settings for component key: 'Django-Project'
+INFO: Load project settings for component key: 'Django-Project' (done) | time=19ms
+INFO: Auto-configuring with CI 'Jenkins'
+INFO: Load quality profiles
+INFO: Load quality profiles (done) | time=85ms
+INFO: Load active rules
+INFO: Load active rules (done) | time=1643ms
+INFO: Load analysis cache
+INFO: Load analysis cache | time=32ms
+INFO: Load project repositories
+INFO: Load project repositories (done) | time=22ms
+INFO: Indexing files...
+INFO: Project configuration:
+INFO: 21 files indexed
+INFO: 35 files ignored because of scm ignore settings
+INFO: Quality profile for py: Sonar way
+INFO: Quality profile for yaml: Sonar way
+INFO: ------------- Run sensors on module Django-Project
+INFO: Load metrics repository
+INFO: Load metrics repository (done) | time=22ms
+INFO: Sensor Python Sensor [python]
+WARN: Your code is analyzed as compatible with python 2 and 3 by default. This will prevent the detection of issues specific to python 2 or python 3. You can get a more precise analysis by setting a python version in your configuration via the parameter "sonar.python.version"
+INFO: Starting global symbols computation
+INFO: 16 source files to be analyzed
+INFO: 16/16 source files have been analyzed
+INFO: Starting rules execution
+INFO: 16 source files to be analyzed
+INFO: 16/16 source files have been analyzed
+INFO: The Python analyzer was able to leverage cached data from previous analyses for 0 out of 16 files. These files were not parsed.
+INFO: Sensor Python Sensor [python] (done) | time=1491ms
+INFO: Sensor Cobertura Sensor for Python coverage [python]
+INFO: Sensor Cobertura Sensor for Python coverage [python] (done) | time=26ms
+INFO: Sensor PythonXUnitSensor [python]
+INFO: Sensor PythonXUnitSensor [python] (done) | time=19ms
+INFO: Sensor JaCoCo XML Report Importer [jacoco]
+INFO: 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+INFO: No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+INFO: Sensor JaCoCo XML Report Importer [jacoco] (done) | time=2ms
+INFO: Sensor IaC CloudFormation Sensor [iac]
+INFO: 0 source files to be analyzed
+INFO: 0/0 source files have been analyzed
+INFO: Sensor IaC CloudFormation Sensor [iac] (done) | time=22ms
+INFO: Sensor IaC Kubernetes Sensor [iac]
+INFO: 1 source file to be analyzed
+INFO: 1/1 source file has been analyzed
+INFO: Sensor IaC Kubernetes Sensor [iac] (done) | time=87ms
+INFO: Sensor JavaScript inside YAML analysis [javascript]
+INFO: No input files found for analysis
+INFO: Hit the cache for 0 out of 0
+INFO: Miss the cache for 0 out of 0
+INFO: Sensor JavaScript inside YAML analysis [javascript] (done) | time=6ms
+INFO: Sensor CSS Rules [javascript]
+INFO: No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+INFO: Sensor CSS Rules [javascript] (done) | time=0ms
+INFO: Sensor C# Project Type Information [csharp]
+INFO: Sensor C# Project Type Information [csharp] (done) | time=1ms
+INFO: Sensor C# Analysis Log [csharp]
+INFO: Sensor C# Analysis Log [csharp] (done) | time=17ms
+INFO: Sensor C# Properties [csharp]
+INFO: Sensor C# Properties [csharp] (done) | time=0ms
+INFO: Sensor HTML [web]
+INFO: Sensor HTML [web] (done) | time=3ms
+INFO: Sensor TextAndSecretsSensor [text]
+INFO: 17 source files to be analyzed
+INFO: 17/17 source files have been analyzed
+INFO: Sensor TextAndSecretsSensor [text] (done) | time=35ms
+INFO: Sensor VB.NET Project Type Information [vbnet]
+INFO: Sensor VB.NET Project Type Information [vbnet] (done) | time=1ms
+INFO: Sensor VB.NET Analysis Log [vbnet]
+INFO: Sensor VB.NET Analysis Log [vbnet] (done) | time=16ms
+INFO: Sensor VB.NET Properties [vbnet]
+INFO: Sensor VB.NET Properties [vbnet] (done) | time=0ms
+INFO: Sensor IaC Docker Sensor [iac]
+INFO: 1 source file to be analyzed
+INFO: 1/1 source file has been analyzed
+INFO: Sensor IaC Docker Sensor [iac] (done) | time=92ms
+INFO: ------------- Run sensors on project
+INFO: Sensor Analysis Warnings import [csharp]
+INFO: Sensor Analysis Warnings import [csharp] (done) | time=1ms
+INFO: Sensor Zero Coverage Sensor
+INFO: Sensor Zero Coverage Sensor (done) | time=13ms
+INFO: SCM Publisher SCM provider for this project is: git
+INFO: SCM Publisher 3 source files to be analyzed
+INFO: SCM Publisher 3/3 source files have been analyzed (done) | time=216ms
+INFO: CPD Executor 11 files had no CPD blocks
+INFO: CPD Executor Calculating CPD for 5 files
+INFO: CPD Executor CPD calculation finished (done) | time=21ms
+INFO: Analysis report generated in 187ms, dir size=152.6 kB
+INFO: Analysis report compressed in 76ms, zip size=51.3 kB
+INFO: Analysis report uploaded in 44ms
+INFO: ANALYSIS SUCCESSFUL, you can find the results at: http://sonarqube:9000/dashboard?id=Django-Project
+INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+INFO: More about the report processing at http://sonarqube:9000/api/ce/task?id=AY6aO3AdVaqYeSU39r83
+INFO: Analysis total time: 8.179 s
+INFO: ------------------------------------------------------------------------
+INFO: EXECUTION SUCCESS
+INFO: ------------------------------------------------------------------------
+INFO: Total time: 9.977s
+INFO: Final Memory: 22M/80M
+INFO: ------------------------------------------------------------------------
+[Pipeline] sh
++ sleep 10
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] timeout
+Timeout set to expire in 5 min 0 sec
+[Pipeline] {
+[Pipeline] echo
+[INFO] [CodeAnalysisStage] Waiting time
+[Pipeline] waitForQualityGate
+Checking status of SonarQube task 'AY6aO3AdVaqYeSU39r83' on server 'sonarqube-server-2'
+SonarQube task 'AY6aO3AdVaqYeSU39r83' status is 'SUCCESS'
+SonarQube task 'AY6aO3AdVaqYeSU39r83' completed. Quality gate is 'OK'
+[Pipeline] echo
+[INFO] [CodeAnalysisStage] qualityGate: OK
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] echo
+[INFO] [CodeAnalysisStage] Finish SonarQube Analysis Django Strategy
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] echo
+[INFO] [CodeAnalysisStage] Finish Static Code Analysis
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Code Coverage Stage)
+[Pipeline] echo
+[INFO] [CodeCoverageStage] Starting Static Code Coverage
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] echo
+[INFO] [CodeCoverageStage] Django Strategy
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . python:alpine3.19
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container 1e8f4b45e121d6cf18f631a96b5e7aeb268a2b417a429e17c1c4d0af98bd4942
+$ docker run -t -d -u 0:0 -w /var/jenkins_home/workspace/devsu-pipelines/devops-stages/python/main --volumes-from 1e8f4b45e121d6cf18f631a96b5e7aeb268a2b417a429e17c1c4d0af98bd4942 -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** python:alpine3.19 cat
+$ docker top f29f71842fa5e4af96b872ef9f220ded28f48548568c99ad479136077bbf014e -eo pid,comm
+[Pipeline] {
+[Pipeline] unstash
+[Pipeline] sh
++ pip install -r requirements.txt
+Collecting django==4.2 (from -r requirements.txt (line 1))
+  Downloading Django-4.2-py3-none-any.whl.metadata (4.1 kB)
+Collecting django-environ==0.10.0 (from -r requirements.txt (line 2))
+  Downloading django_environ-0.10.0-py2.py3-none-any.whl.metadata (13 kB)
+Collecting djangorestframework==3.14.0 (from -r requirements.txt (line 3))
+  Downloading djangorestframework-3.14.0-py3-none-any.whl.metadata (10 kB)
+Collecting asgiref<4,>=3.6.0 (from django==4.2->-r requirements.txt (line 1))
+  Downloading asgiref-3.8.1-py3-none-any.whl.metadata (9.3 kB)
+Collecting sqlparse>=0.3.1 (from django==4.2->-r requirements.txt (line 1))
+  Downloading sqlparse-0.4.4-py3-none-any.whl.metadata (4.0 kB)
+Collecting pytz (from djangorestframework==3.14.0->-r requirements.txt (line 3))
+  Downloading pytz-2024.1-py2.py3-none-any.whl.metadata (22 kB)
+Downloading Django-4.2-py3-none-any.whl (8.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.0/8.0 MB 107.3 MB/s eta 0:00:00
+Downloading django_environ-0.10.0-py2.py3-none-any.whl (19 kB)
+Downloading djangorestframework-3.14.0-py3-none-any.whl (1.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 99.9 MB/s eta 0:00:00
+Downloading asgiref-3.8.1-py3-none-any.whl (23 kB)
+Downloading sqlparse-0.4.4-py3-none-any.whl (41 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 41.2/41.2 kB 7.2 MB/s eta 0:00:00
+Downloading pytz-2024.1-py2.py3-none-any.whl (505 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 505.5/505.5 kB 68.6 MB/s eta 0:00:00
+Installing collected packages: pytz, sqlparse, django-environ, asgiref, django, djangorestframework
+Successfully installed asgiref-3.8.1 django-4.2 django-environ-0.10.0 djangorestframework-3.14.0 pytz-2024.1 sqlparse-0.4.4
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[Pipeline] sh
++ pip install coverage
+Collecting coverage
+  Downloading coverage-7.4.4-cp312-cp312-musllinux_1_1_x86_64.whl.metadata (8.2 kB)
+Downloading coverage-7.4.4-cp312-cp312-musllinux_1_1_x86_64.whl (244 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 244.8/244.8 kB 11.2 MB/s eta 0:00:00
+Installing collected packages: coverage
+Successfully installed coverage-7.4.4
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[Pipeline] sh
++ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, api, auth, contenttypes, sessions
+Running migrations:
+  No migrations to apply.
+[Pipeline] sh
++ coverage run manage.py test
+Creating test database for alias 'default'...
+Found 3 test(s).
+System check identified no issues (0 silenced).
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.031s
+
+OK
+Destroying test database for alias 'default'...
+[Pipeline] sh
++ coverage report
+Name                             Stmts   Miss  Cover
+----------------------------------------------------
+api/__init__.py                      0      0   100%
+api/admin.py                         3      0   100%
+api/apps.py                          4      0   100%
+api/migrations/0001_initial.py       5      0   100%
+api/migrations/__init__.py           0      0   100%
+api/models.py                        6      1    83%
+api/serializers.py                   6      0   100%
+api/tests.py                        23      0   100%
+api/urls.py                          6      0   100%
+api/views.py                        21      1    95%
+demo/__init__.py                     0      0   100%
+demo/settings.py                    24      0   100%
+demo/urls.py                         3      0   100%
+manage.py                           12      2    83%
+----------------------------------------------------
+TOTAL                              113      4    96%
+[Pipeline] sh
++ coverage html
+Wrote HTML report to htmlcov/index.html
+[Pipeline] }
+$ docker stop --time=1 f29f71842fa5e4af96b872ef9f220ded28f48548568c99ad479136077bbf014e
+$ docker rm -f --volumes f29f71842fa5e4af96b872ef9f220ded28f48548568c99ad479136077bbf014e
+[Pipeline] // withDockerContainer
+[Pipeline] echo
+[INFO] [CodeCoverageStage] Finish Django Strategy
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] echo
+[INFO] [CodeCoverageStage] Finish Static Code Analysis
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Delivery (Docker) Stage)
+[Pipeline] echo
+[INFO] [DeliveryStage] Starting Delivery Stage
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] echo
+[INFO] [deliverDjangoStrategy] Django-Python Strategy
+[Pipeline] sh
++ git log -n 1 '--pretty=format:%H'
+[Pipeline] echo
+Git commit = 4d71a03
+[Pipeline] sh
++ docker login -u eingaruca -p dckr_pat_I1tZsF5F4aAq-mq9kZSmp3SaGXA
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[Pipeline] sh
++ docker build -t demodjango:4d71a03 .
+#1 [internal] load build definition from Dockerfile
+#1 sha256:b508876dfd7b304048aaf313529448ca14b45394acd0fd2312d0c64e4e968ceb
+#1 transferring dockerfile: 240B done
+#1 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:alpine3.19
+#3 sha256:da25e7e4d91984ea091e82a1b243dfe0ba8b7c24fd1b1cba76b3083ac8142f97
+#3 DONE 0.0s
+
+#2 [internal] load .dockerignore
+#2 sha256:e112f885336a0fb57c601ff3ca545634f4fbc1e52583dd271b239fa1dd3d17fb
+#2 transferring context: 2B done
+#2 DONE 0.0s
+
+#9 [1/5] FROM docker.io/library/python:alpine3.19
+#9 sha256:92926f548fd3ee10e9cdb78575e40ce332d12a8d16d44a95ce0a048d82a0ef4b
+#9 DONE 0.0s
+
+#7 [internal] load build context
+#7 sha256:7df3574361180e8a539070cc20d19f41d40fbac2dd669504dcc7e2231f090a57
+#7 transferring context: 174.63kB 0.0s done
+#7 DONE 0.0s
+
+#8 [2/5] WORKDIR /app
+#8 sha256:19af1ff8a22ed914b956bab5c386097b1baaef92f98064d3df4e8fd3abc9d695
+#8 CACHED
+
+#6 [3/5] COPY . /app
+#6 sha256:f87d8e3f1ea4580cd9cbb3210409ecff28464ccbf69ca5f887438f65e6804348
+#6 DONE 0.0s
+
+#5 [4/5] RUN pip install --no-cache-dir -r requirements.txt
+#5 sha256:d663ffbf619be013d04d8cd03804a8b8093a064523d605ed55ae594fab10d6d3
+#5 2.274 Collecting django==4.2 (from -r requirements.txt (line 1))
+#5 2.317   Downloading Django-4.2-py3-none-any.whl.metadata (4.1 kB)
+#5 2.333 Collecting django-environ==0.10.0 (from -r requirements.txt (line 2))
+#5 2.341   Downloading django_environ-0.10.0-py2.py3-none-any.whl.metadata (13 kB)
+#5 2.380 Collecting djangorestframework==3.14.0 (from -r requirements.txt (line 3))
+#5 2.387   Downloading djangorestframework-3.14.0-py3-none-any.whl.metadata (10 kB)
+#5 2.418 Collecting asgiref<4,>=3.6.0 (from django==4.2->-r requirements.txt (line 1))
+#5 2.425   Downloading asgiref-3.8.1-py3-none-any.whl.metadata (9.3 kB)
+#5 2.442 Collecting sqlparse>=0.3.1 (from django==4.2->-r requirements.txt (line 1))
+#5 2.449   Downloading sqlparse-0.4.4-py3-none-any.whl.metadata (4.0 kB)
+#5 2.557 Collecting pytz (from djangorestframework==3.14.0->-r requirements.txt (line 3))
+#5 2.564   Downloading pytz-2024.1-py2.py3-none-any.whl.metadata (22 kB)
+#5 2.591 Downloading Django-4.2-py3-none-any.whl (8.0 MB)
+#5 2.635    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.0/8.0 MB 193.5 MB/s eta 0:00:00
+#5 2.644 Downloading django_environ-0.10.0-py2.py3-none-any.whl (19 kB)
+#5 2.654 Downloading djangorestframework-3.14.0-py3-none-any.whl (1.1 MB)
+#5 2.659    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 422.5 MB/s eta 0:00:00
+#5 2.666 Downloading asgiref-3.8.1-py3-none-any.whl (23 kB)
+#5 2.672 Downloading sqlparse-0.4.4-py3-none-any.whl (41 kB)
+#5 2.675    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 41.2/41.2 kB 236.4 MB/s eta 0:00:00
+#5 2.683 Downloading pytz-2024.1-py2.py3-none-any.whl (505 kB)
+#5 2.687    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 505.5/505.5 kB 417.7 MB/s eta 0:00:00
+#5 2.844 Installing collected packages: pytz, sqlparse, django-environ, asgiref, django, djangorestframework
+#5 5.032 Successfully installed asgiref-3.8.1 django-4.2 django-environ-0.10.0 djangorestframework-3.14.0 pytz-2024.1 sqlparse-0.4.4
+#5 5.032 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#5 DONE 5.6s
+
+#4 [5/5] RUN python manage.py migrate
+#4 sha256:459492f2575c2341922f04acee9b764ea75f79c71114efe3e3e43702ce6f7fdc
+#4 0.669 Operations to perform:
+#4 0.669   Apply all migrations: admin, api, auth, contenttypes, sessions
+#4 0.669 Running migrations:
+#4 0.669   No migrations to apply.
+#4 DONE 0.8s
+
+#10 exporting to image
+#10 sha256:008fcfba80ae4551fd392b7283ff20d9bef4c5007f32258fd6ca2f53fdfd8d72
+#10 exporting layers
+#10 exporting layers 0.7s done
+#10 writing image sha256:1425473964ac306950f7b747ead21ef01e3766ad2fe7f6b549687a5d166b50ba done
+#10 naming to docker.io/library/demodjango:4d71a03 done
+#10 DONE 0.7s
+[Pipeline] sh
++ docker tag demodjango:4d71a03 eingaruca/django:4d71a03
+[Pipeline] sh
++ docker push eingaruca/django:4d71a03
+The push refers to repository [docker.io/eingaruca/django]
+2a5922cea4ea: Preparing
+e35751e0ab31: Preparing
+c0c49a31fa24: Preparing
+7ba1ce679762: Preparing
+508dfc87ccb1: Preparing
+4078a022c6e3: Preparing
+f5403ef07884: Preparing
+4c9c2b9681ab: Preparing
+d4fc045c9e3a: Preparing
+4078a022c6e3: Waiting
+f5403ef07884: Waiting
+4c9c2b9681ab: Waiting
+d4fc045c9e3a: Waiting
+7ba1ce679762: Layer already exists
+508dfc87ccb1: Layer already exists
+4078a022c6e3: Layer already exists
+f5403ef07884: Layer already exists
+4c9c2b9681ab: Layer already exists
+d4fc045c9e3a: Layer already exists
+c0c49a31fa24: Pushed
+2a5922cea4ea: Pushed
+e35751e0ab31: Pushed
+4d71a03: digest: sha256:a05e38496fbe4d6c61196092a6910aea38776cd945e846a479e8500d3735f2bf size: 2206
+[Pipeline] sh
++ docker rmi demodjango:4d71a03
+Untagged: demodjango:4d71a03
+[Pipeline] sh
++ docker rmi eingaruca/django:4d71a03
+Untagged: eingaruca/django:4d71a03
+Untagged: eingaruca/django@sha256:a05e38496fbe4d6c61196092a6910aea38776cd945e846a479e8500d3735f2bf
+Deleted: sha256:1425473964ac306950f7b747ead21ef01e3766ad2fe7f6b549687a5d166b50ba
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] echo
+[INFO] [DeliveryStage] Finish Delivery Stage
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy (GKE) Stage)
+[Pipeline] echo
+[INFO] [DeployStage] Starting Deployment Stage
+[Pipeline] withFolderProperties
+[Pipeline] {
+[Pipeline] echo
+[INFO] [deliverySBStrategy] Springboot Strategy
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . google/cloud-sdk:470.0.0
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container 1e8f4b45e121d6cf18f631a96b5e7aeb268a2b417a429e17c1c4d0af98bd4942
+$ docker run -t -d -u 0:0 -w /var/jenkins_home/workspace/devsu-pipelines/devops-stages/python/main --volumes-from 1e8f4b45e121d6cf18f631a96b5e7aeb268a2b417a429e17c1c4d0af98bd4942 -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** google/cloud-sdk:470.0.0 cat
+$ docker top 4db8e397abcbdb1087130a1ce400c11835ab88db1c53135e616b9c76eab8ae34 -eo pid,comm
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $GKE_CREDENTIALS_FILE
+[Pipeline] {
+[Pipeline] sh
+Warning: A secret was passed to "sh" using Groovy String interpolation, which is insecure.
+		 Affected argument(s) used the following variable(s): [GKE_CREDENTIALS_FILE]
+		 See https://jenkins.io/redirect/groovy-string-interpolation for details.
++ gcloud auth activate-service-account --key-file=****
+Activated service account credentials for: [admin-sa-devsuproject@devsu-project.iam.gserviceaccount.com]
+[Pipeline] sh
++ gcloud container clusters get-credentials devsu-cluster-test --zone europe-west1-b --project devsu-project
+Fetching cluster endpoint and auth data.
+kubeconfig entry generated for devsu-cluster-test.
+[Pipeline] sh
++ git log -n 1 --pretty=format:%H
+[Pipeline] echo
+Git commit = 4d71a03
+[Pipeline] sh
++ sed -i s|TAGVARIABLE|4d71a03|g manifest.yaml
+[Pipeline] sh
++ cat manifest.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: python-app
+  template:
+    metadata:
+      labels:
+        app: python-app
+    spec:
+      containers:
+      - name: python-app
+        image: eingaruca/django:4d71a03
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+        livenessProbe:
+          failureThreshold: 15
+          httpGet:
+            path: /api/users
+            port: 8000
+            scheme: HTTP
+          initialDelaySeconds: 50
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 10
+        readinessProbe:
+          failureThreshold: 15
+          httpGet:
+            path: /api/users
+            port: 8000
+            scheme: HTTP
+          initialDelaySeconds: 50
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 10
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: python-app-svc
+# spec:
+#   selector:
+#     app: python-app
+#   ports:
+#   - protocol: TCP
+#     port: 8000
+#     targetPort: 8000
+#   type: NodePort
+[Pipeline] sh
++ kubectl delete -f ./manifest.yaml --ignore-not-found
+deployment.apps "python-app" deleted
+[Pipeline] sh
++ kubectl apply -f ./manifest.yaml
+deployment.apps/python-app created
+[Pipeline] sh
++ sleep 5
+[Pipeline] sh
++ kubectl get pods
+NAME                          READY   STATUS              RESTARTS   AGE
+nodejs-app-67cb6b7b5-gxptk    1/1     Running             0          168m
+nodejs-app-67cb6b7b5-w26zg    1/1     Running             0          168m
+python-app-764ffb5f65-dvgfr   0/1     ContainerCreating   0          6s
+python-app-764ffb5f65-kvbqw   0/1     ContainerCreating   0          6s
+sb-app-54cc848569-n2zlm       1/1     Running             0          47m
+sb-app-54cc848569-s7z4j       1/1     Running             0          47m
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+$ docker stop --time=1 4db8e397abcbdb1087130a1ce400c11835ab88db1c53135e616b9c76eab8ae34
+$ docker rm -f --volumes 4db8e397abcbdb1087130a1ce400c11835ab88db1c53135e616b9c76eab8ae34
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] echo
+[INFO] [DeployStage] Finish Deployment Stage
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // withFolderProperties
+[Pipeline] End of Pipeline
+Finished: SUCCESS
