@@ -12,7 +12,7 @@ def call() {
 
         def GIT_COMMIT_HASH = sh(script: "git log -n 1 --pretty=format:'%H'", returnStdout: true).trim()[0..6]
         echo "Git commit = ${GIT_COMMIT_HASH}"
-
+        unstash name: 'build'
         sh "ls -l"
         sh "ls -l target"
         sh "docker login -u eingaruca -p dckr_pat_I1tZsF5F4aAq-mq9kZSmp3SaGXA"
