@@ -13,7 +13,7 @@ def call() {
             
         }
         // Make stash to use in other stages
-        stash name: 'build', includes: '*' //, includes: 'pom.xml,**/pom.xml,**/src/,src/'
+        stash name: 'build'//, includes: '*' //, includes: 'pom.xml,**/pom.xml,**/src/,src/'
         utils.info "BuildStage", "Finish SpringBoot Strategy"
     }
 }
